@@ -205,4 +205,4 @@ ex ()
   fi
 }
 
-ufetch
+pfetch
