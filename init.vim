@@ -15,29 +15,22 @@
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-
+" ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
-Plug 'neoclide/coc.nvim'
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
-Plug 'morhetz/gruvbox'
 Plug 'vim-python/python-syntax'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-vividchalk'
+"Plug 'neoclide/coc.nvim'
 
 "Initialize plugin system
 call plug#end()
 
 
-
-
 let mapleader = ","
-
-
 
 
 "true colors
@@ -46,18 +39,13 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-colorscheme gruvbox
-"airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='gruvbox'
+colorscheme vividchalk
 
 " show whitespaces
 set list lcs=space:·,tab:»·
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-
 
 
 " Nerd tree
@@ -70,31 +58,29 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
     endif
 
 
-
-
 " coc stuff
 " use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+"function! s:check_back_space() abort
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~ '\s'
+"endfunction
 
-inoremap <silent><expr> <tab>
-      \ pumvisible() ? "\<c-n>" :
-      \ <sid>check_back_space() ? "\<tab>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <tab>
+      "\ pumvisible() ? "\<c-n>" :
+      "\ <sid>check_back_space() ? "\<tab>" :
+      "\ coc#refresh()
 
-" use <c-space>for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+"" use <c-space>for trigger completion
+"inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+"inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>"
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
 
-" Go to definitions
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
+"" Go to definitions
+"nmap <leader>gd <Plug>(coc-definition)
+"nmap <leader>gr <Plug>(coc-references)
 
 
 
@@ -102,10 +88,8 @@ nmap <leader>gr <Plug>(coc-references)
 let g:python_highlight_all = 1
 
 
-
 " fzf stuff
 nnoremap <C-p> :Files<CR>
-
 
 
 " settings and mappings
@@ -121,7 +105,7 @@ set expandtab " convert tab to spaces
 "set cursorline " hilight current line
 set clipboard=unnamedplus " us os clipboard
 set noswapfile
-set encoding=utf-8
+set encoding=utf-8 "neo vim uses utf-8 by default
 
 " Intelligent Searching
 set smartcase
@@ -133,9 +117,6 @@ set splitbelow splitright
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Goyo plugin makes text more readable when writing prose:
-map <leader>f :Goyo \| set bg=dark \| set linebreak<CR>
 
 " move between buffers
 map <C-Left> <Esc>:bprev<CR>
@@ -155,4 +136,4 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
 
 set noruler
-set noshowmode " don't show status in the command buffer
+"set noshowmode " don't show status in the command buffer
