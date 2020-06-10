@@ -1,4 +1,4 @@
-                                                  "/$$   /$$
+jjjjjjjjjjjjjjjjjjjjjjjjjjjj                                                  "/$$   /$$
                                                   "| $$  / $$
   "/$$$$$$   /$$$$$$  /$$$$$$  /$$    /$$ /$$   /$$|  $$/ $$/
  "/$$__  $$ /$$__  $$|____  $$|  $$  /$$/| $$  | $$ \  $$$$/
@@ -89,7 +89,7 @@ let g:python_highlight_all = 1
 
 
 " fzf stuff
-nnoremap <leader>f :Files<CR>
+nnoremap <C-p> :Files<CR>
 
 
 " settings and mappings
@@ -106,8 +106,6 @@ set expandtab " convert tab to spaces
 set clipboard=unnamedplus " us os clipboard
 set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
-set colorcolumn=120
-highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Intelligent Searching
 set smartcase
