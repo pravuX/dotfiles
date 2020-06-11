@@ -48,15 +48,6 @@ set list lcs=space:·,tab:»·
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
-" Nerd tree
-map <leader>n :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    if has('nvim')
-        let NERDTreeBookmarksFile = stdpath('data') . '/NERDTreeBookmarks'
-    else
-        let NERDTreeBookmarksFile = '~/.vim' . '/NERDTreeBookmarks'
-    endif
-
 
 " coc stuff
 " use <tab> for trigger completion and navigate to the next complete item
@@ -102,12 +93,13 @@ set sw=2 " no of spaces when shift indenting
 set ts=2 " no of visual spaces per tab
 set softtabstop=2 " no of spaces in tab when editing
 set expandtab " convert tab to spaces
-"set cursorline " hilight current line
+set cursorline " hilight current line
 set clipboard=unnamedplus " us os clipboard
 set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
-set colorcolumn=120
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+set nowrap
+"set colorcolumn=80
+"highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Intelligent Searching
 set smartcase
