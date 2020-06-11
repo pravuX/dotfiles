@@ -211,7 +211,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id volumeicon
 
 # set background
-exec_always --no-startup-id feh --bg-scale ~/Downloads/61166671939b174a.png
+exec_always --no-startup-id feh --bg-scale ~/Downloads/Nord\ Wallpaper\ Pack/Nord\ Night.png
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
