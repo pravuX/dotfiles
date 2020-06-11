@@ -36,7 +36,7 @@ alias l.="ls -A | egrep '^\.'"
 #fix obvious typo's
 alias cd..='cd ..'
 alias pdw="pwd"
-alias udpate='sudo pacman -Syyu'
+alias udpate='sudo pacman -Syyu --noconfirm'
 alias upate='sudo pacman -Syyu --noconfirm'
 
 ## Colorize the grep command output for ease of use (good for log files)##
