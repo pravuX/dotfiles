@@ -1,8 +1,6 @@
                                                   "/$$   /$$
                                                   "| $$  / $$
-  "/$$$$$$   /$$$$$$  /$$$$$$  /$$    /$$ /$$   /$$|  $$/ $$/
- "/$$__  $$ /$$__  $$|____  $$|  $$  /$$/| $$  | $$ \  $$$$/
-"| $$  \ $$| $$  \__/ /$$$$$$$ \  $$/$$/ | $$  | $$  >$$  $$
+  "/$$$$$$   /$$$$$$  /$$$$$$  /$$    /$$ /$$   /$$|  $$/ $$/ /$$__  $$ /$$__  $$|____  $$|  $$  /$$/| $$  | $$ \  $$$$/ | $$  \ $$| $$  \__/ /$$$$$$$ \  $$/$$/ | $$  | $$  >$$  $$
 "| $$  | $$| $$      /$$__  $$  \  $$$/  | $$  | $$ /$$/\  $$
 "| $$$$$$$/| $$     |  $$$$$$$   \  $/   |  $$$$$$/| $$  \ $$
 "| $$____/ |__/      \_______/    \_/     \______/ |__/  |__/
@@ -23,6 +21,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
 Plug 'tpope/vim-vividchalk'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'neoclide/coc.nvim'
@@ -46,13 +45,18 @@ set background=dark
 "let g:nord_underline = 1
 colorscheme vividchalk
 
+
 " show whitespaces
 set list lcs=space:·,tab:»·
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-
+" fzf stuff
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>F :Files ~/<CR>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " coc stuff
 " use <tab> for trigger completion and navigate to the next complete item
@@ -87,9 +91,9 @@ syntax on
 set number
 set relativenumber " show number
 set smartindent
-set sw=2 " no of spaces when shift indenting
-set ts=2 " no of visual spaces per tab
-set softtabstop=2 " no of spaces in tab when editing
+set sw=4 " no of spaces when shift indenting
+set ts=4 " no of visual spaces per tab
+set softtabstop=4 " no of spaces in tab when editing
 set expandtab " convert tab to spaces
 set cursorline " hilight current line
 set clipboard=unnamedplus " us os clipboard
@@ -147,10 +151,54 @@ autocmd BufWritepre * %s/\n\+\%$//e
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
 
-" Change text without putting the text into register,
+" Change text without putting the text into register(comes handy when pasting)
 nnoremap c "_c
 nnoremap C "_C
 nnoremap cc "_cc
 
 set noruler
 set noshowmode " don't show status in the command buffer
+
+
+"Lightline config
+let g:lightline = {
+    \ 'mode_map': {
+       \ 'n'  : 'N',
+       \ 'v'  : 'V',
+       \ 'V'  : 'V·L',
+       \ '' : 'V·B',
+       \ 'i'  : 'I',
+       \ 'R'  : 'R',
+       \ 'Rv' : 'V·R',
+       \ 'c'  : 'C',
+    \ },
+    \ 'colorscheme': 'OldHope',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'readonly', 'filename' ] ],
+    \ },
+    \ 'component': {
+    \   'mode': '%{toupper(g:lightline.mode_map[mode()])}'
+    \ },
+    \ 'component_function': {
+    \   'filename': 'LightlineFilename',
+    \   'fileformat': 'LightlineFileFormat',
+    \   'filetype': 'LightlineFileType',
+    \ },
+    \ }
+
+" join the modified indicator with filename
+function! LightlineFilename()
+    let filename = expand('%:t') !=# '' ? '‹‹' . expand('%:t') . '››' : '‹no name›'
+    let modified = &modified ? '[+]' : ''
+    return filename . modified
+endfunction
+
+" deprecate type and format when windows are small
+function! LightlineFileFormat()
+    return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightlineFileType()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
