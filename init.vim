@@ -5,10 +5,7 @@
 "| $$$$$$$/| $$     |  $$$$$$$   \  $/   |  $$$$$$/| $$  \ $$
 "| $$____/ |__/      \_______/    \_/     \______/ |__/  |__/
 "| $$
-"| $$
-"|__/
-"
-" Personal Configurations of Prabesh Subedi
+"| $$ |__/ Personal Configurations of Prabesh Subedi
 
 
 " Plugins
@@ -178,18 +175,18 @@ let g:lightline = {
     \             [ 'readonly', 'filename' ] ],
     \ },
     \ 'component': {
-    \   'mode': '%{toupper(g:lightline.mode_map[mode()])}'
     \ },
     \ 'component_function': {
     \   'filename': 'LightlineFilename',
     \   'fileformat': 'LightlineFileFormat',
     \   'filetype': 'LightlineFileType',
+    \   'readonly': 'LightlineReadonly',
     \ },
     \ }
 
 " join the modified indicator with filename
 function! LightlineFilename()
-    let filename = expand('%:t') !=# '' ? '‹‹' . expand('%:t') . '››' : '‹no name›'
+    let filename = expand('%:t') !=# '' ? '‹‹' . expand('%:t') . '››' : '‹‹no name››'
     let modified = &modified ? '[+]' : ''
     return filename . modified
 endfunction
@@ -198,7 +195,12 @@ endfunction
 function! LightlineFileFormat()
     return winwidth(0) > 70 ? &fileformat : ''
 endfunction
-
 function! LightlineFileType()
     return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+" display the lock symbol for readonly files
+function! LightlineReadonly()
+    let readonly = &readonly ? '[]' : ''
+    return readonly
 endfunction
