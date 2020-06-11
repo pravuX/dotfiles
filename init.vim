@@ -59,10 +59,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 "inoremap <silent><expr> <tab>
       "\ pumvisible() ? "\<c-n>" :
       "\ <sid>check_back_space() ? "\<tab>" :
-      "\ coc#refresh()
-
-"" use <c-space>for trigger completion
-"inoremap <silent><expr> <c-space> coc#refresh()
+      "\ coc#refresh() "" use <c-space>for trigger completion "inoremap <silent><expr> <c-space> coc#refresh()
 "inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 "inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
@@ -130,4 +127,52 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
 
 set noruler
-"set noshowmode " don't show status in the command buffer
+set noshowmode " don't show status in the command buffer
+
+
+" Statusline settings
+
+"define custom highlight group
+hi User1 guibg=#2e2e2e guifg=#ffffff
+
+let g:currentmode={
+       \ 'n'  : 'N',
+       \ 'v'  : 'V',
+       \ 'V'  : 'V·L',
+       \ '' : 'V·B',
+       \ 'i'  : 'I',
+       \ 'R'  : 'R',
+       \ 'Rv' : 'V·R',
+       \ 'c'  : 'C',
+       \}
+
+
+set statusline=               "initialise
+set statusline+=%1*           "initialise color sequence
+set statusline+=%<\           "cut at start
+
+"show current mode
+set statusline+=‹
+set statusline+=%{toupper(g:currentmode[mode()])}
+set statusline+=›
+
+set statusline+=\ ‹‹
+set statusline+=%t            "tail of the filename
+set statusline+=%m            "modified flag
+set statusline+=››
+set statusline+=%{&readonly?'\ []':''} "readonly flag
+set statusline+=%=            "left/right separator
+set statusline+=\ ‹
+set statusline+=%Y            "filetype
+set statusline+=:%{&ff}       "file format
+set statusline+=›
+set statusline+=\             "blankspace
+set statusline+=%v            "cursor column
+set statusline+=:             "colon separator
+set statusline+=%l/%L         "cursor line/total lines
+set statusline+=\             "blankspace
+set statusline+=‹
+set statusline+=%{winnr()}    "buffer number
+set statusline+=›
+
+set statusline+=%*            "switch back to statusline highlight ending color sequence
