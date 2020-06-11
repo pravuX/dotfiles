@@ -17,13 +17,14 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
-Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vividchalk'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "Plug 'neoclide/coc.nvim'
 
 "Initialize plugin system
@@ -39,6 +40,10 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
+" nord config
+"let g:nord_italic = 1
+"let g:nord_italic_comments = 1
+"let g:nord_underline = 1
 colorscheme vividchalk
 
 " show whitespaces
@@ -76,10 +81,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 let g:python_highlight_all = 1
 
 
-" fzf stuff
-nnoremap <leader>f :Files<CR>
-
-
 " settings and mappings
 set nocp " make sure vim is not in compatible mode
 syntax on
@@ -99,6 +100,7 @@ set nowrap
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Intelligent Searching
+set ignorecase
 set smartcase
 set incsearch
 set hlsearch
@@ -108,6 +110,16 @@ set splitbelow splitright
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Resize split windows using <Alt> and h,j,k,l, inspiration from
+nnoremap <silent> <M-h> <C-w><
+nnoremap <silent> <M-l> <C-w>>
+nnoremap <silent> <M-j> <C-W>-
+nnoremap <silent> <M-k> <C-W>+
+
+" Yank from current cursor position to the end of the line (make it
+" consistent with the behavior of D, C)
+nnoremap Y y$
 
 " move between buffers
 map <C-Left> <Esc>:bprev<CR>
@@ -120,59 +132,25 @@ map <C-k> <C-W>k
 map <C-j> <C-W>j
 
 " cd to current file directory
-nnoremap <leader>gh :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
-" Automatically deletes all trailing whitespace and newlines at end of file on save.
+" Use Esc to quit builtin terminal
+if exists(":tnoremap")
+    tnoremap <ESC>   <C-\><C-n>
+endif
+
+" Automatically delete all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
 
+" Toggle spell checking
+nnoremap <silent> <F11> :set spell!<cr>
+inoremap <silent> <F11> <C-O>:set spell!<cr>
+
+" Change text without putting the text into register,
+nnoremap c "_c
+nnoremap C "_C
+nnoremap cc "_cc
+
 set noruler
 set noshowmode " don't show status in the command buffer
-
-
-" Statusline settings
-
-"define custom highlight group
-hi User1 guibg=#2e2e2e guifg=#ffffff
-
-let g:currentmode={
-       \ 'n'  : 'N',
-       \ 'v'  : 'V',
-       \ 'V'  : 'V·L',
-       \ '' : 'V·B',
-       \ 'i'  : 'I',
-       \ 'R'  : 'R',
-       \ 'Rv' : 'V·R',
-       \ 'c'  : 'C',
-       \}
-
-
-set statusline=               "initialise
-set statusline+=%1*           "initialise color sequence
-set statusline+=%<\           "cut at start
-
-"show current mode
-set statusline+=‹
-set statusline+=%{toupper(g:currentmode[mode()])}
-set statusline+=›
-
-set statusline+=\ ‹‹
-set statusline+=%t            "tail of the filename
-set statusline+=%m            "modified flag
-set statusline+=››
-set statusline+=%{&readonly?'\ []':''} "readonly flag
-set statusline+=%=            "left/right separator
-set statusline+=\ ‹
-set statusline+=%Y            "filetype
-set statusline+=:%{&ff}       "file format
-set statusline+=›
-set statusline+=\             "blankspace
-set statusline+=%v            "cursor column
-set statusline+=:             "colon separator
-set statusline+=%l/%L         "cursor line/total lines
-set statusline+=\             "blankspace
-set statusline+=‹
-set statusline+=%{winnr()}    "buffer number
-set statusline+=›
-
-set statusline+=%*            "switch back to statusline highlight ending color sequence
