@@ -16,12 +16,12 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
-Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
 Plug 'tpope/vim-vividchalk'
+Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -40,11 +40,9 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-" nord config
-"let g:nord_italic = 1
-"let g:nord_italic_comments = 1
-"let g:nord_underline = 1
-colorscheme vividchalk
+" gruvbox config
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 
 " show whitespaces
@@ -173,7 +171,7 @@ let g:lightline = {
        \ 'Rv' : 'V·R',
        \ 'c'  : 'C',
     \ },
-    \ 'colorscheme': 'landscape',
+    \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename' ] ],
