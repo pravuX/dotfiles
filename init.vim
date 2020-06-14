@@ -96,11 +96,11 @@ set sw=4 " no of spaces when shift indenting
 set ts=4 " no of visual spaces per tab
 set softtabstop=4 " no of spaces in tab when editing
 set expandtab " convert tab to spaces
-set cursorline " hilight current line
+"set cursorline  "hilight current line
 set clipboard=unnamedplus " us os clipboard
 set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
-set nowrap
+set wrap
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -173,7 +173,7 @@ let g:lightline = {
        \ 'Rv' : 'V·R',
        \ 'c'  : 'C',
     \ },
-    \ 'colorscheme': 'OldHope',
+    \ 'colorscheme': 'landscape',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename' ] ],
@@ -183,8 +183,8 @@ let g:lightline = {
     \ 'component_function': {
     \   'filename': 'LightlineFilename',
     \   'fileformat': 'LightlineFileFormat',
-    \   'filetype': 'LightlineFileType',
     \   'readonly': 'LightlineReadonly',
+    \   'fileencoding': 'LightlineFileencoding',
     \ },
     \ }
 
@@ -199,8 +199,8 @@ endfunction
 function! LightlineFileFormat()
     return winwidth(0) > 70 ? &fileformat : ''
 endfunction
-function! LightlineFileType()
-    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+function! LightlineFileencoding()
+    return winwidth(0) > 70 ? &fileencoding : ''
 endfunction
 
 " display the lock symbol for readonly files
