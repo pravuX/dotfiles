@@ -19,12 +19,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-python/python-syntax'
-Plug 'tpope/vim-vividchalk'
-Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+"Plug 'tpope/vim-vividchalk'
 "Plug 'neoclide/coc.nvim'
 
 "Initialize plugin system
@@ -40,9 +40,13 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-" gruvbox config
-let g:gruvbox_italic=1
-colorscheme gruvbox
+"nord config
+let g:nord_cursor_line_number_background = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+colorscheme nord
 
 
 " show whitespaces
@@ -94,11 +98,12 @@ set sw=4 " no of spaces when shift indenting
 set ts=4 " no of visual spaces per tab
 set softtabstop=4 " no of spaces in tab when editing
 set expandtab " convert tab to spaces
-"set cursorline  "hilight current line
+set cursorline  "hilight current line
 set clipboard=unnamedplus " us os clipboard
 set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
 set wrap
+set showbreak=↪
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -171,7 +176,7 @@ let g:lightline = {
        \ 'Rv' : 'V·R',
        \ 'c'  : 'C',
     \ },
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme': 'nord',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename' ] ],
