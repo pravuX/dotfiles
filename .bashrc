@@ -178,6 +178,9 @@ alias vim="nvim"
 #for learning purposes
 alias lvim="vim -u ~/.vim/essential.vim -N"
 
+#vi mode for bash
+set -o vi
+
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
 ex ()
