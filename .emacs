@@ -3,9 +3,6 @@
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 
-;;(require 'evil) ;; invoke the devil
-;;(evil-mode 1)
-;;(evil-select-search-module 'evil-search-module 'evil-search) ;; vimify the search
 (setq inhibit-startup-screen t) ;; rid me of the hideous splash screen
 (menu-bar-mode 0) ;; rid me of the hideous menubar
 (tool-bar-mode 0) ;; rid me of the hideous toolbar
@@ -33,7 +30,7 @@
  '(frame-brackground-mode (quote dark))
  '(package-selected-packages
    (quote
-    (nord-theme elpy gruber-darker-theme evil autothemer)))
+    (gruvbox-theme nord-theme elpy gruber-darker-theme evil autothemer)))
  '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#1d2021"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -41,9 +38,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; Dev Setup
-;; for python
-(elpy-enable)
-
-;; this file was recently edited in vim. bwahahah how does that make you feel huh
