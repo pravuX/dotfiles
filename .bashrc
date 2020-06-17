@@ -14,10 +14,27 @@
 
 export HISTCONTROL=ignoreboth:erasedups
 
+# Prompt
 #┌[~]
 #└ॐ
-PS1='╭[\[\e[32m\]\W\[\e[m\]]\n╰\[\e[35m\]ॐ\[\e[m\] '
+
+PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\]ॐ\[\e[35m\] ▶\[\033[0m\] '
+#PS1='╭[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n╰\[\e[35m\] ▶\[\e[m\] '
 #PS1='┌[\[\e[32m\]\W\[\e[m\]]\n└\[\e[35m\]ॐ\[\e[m\] '
+
+# git stuff
+if [ -f ~/.bash_git ]; then
+  GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWSTASHSTATE=true
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  GIT_PS1_SHOWUPSTREAM="auto"
+  GIT_PS1_HIDE_IF_PWD_IGNORED=true
+  GIT_PS1_SHOWCOLORHINTS=true
+  . ~/.bash_git
+fi
+
+
+
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
 fi
