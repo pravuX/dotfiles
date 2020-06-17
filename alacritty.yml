@@ -36,18 +36,18 @@ font:
   # The normal (roman) font face to use.
   size: 14
   normal:
-    family: SauceCodePro Nerd Font
+    family: Fira Code
     # Style can be specified to pick a specific face.
     style: Regular
 
   # The bold font face
   bold:
-    family: SauceCodePro Nerd Font
+    family: Fira Code
     # Style can be specified to pick a specific face.
     style: Bold
 
   # The italic font face
   italic:
-    family: SauceCodePro Nerd Font
+    family: Fira Code
     # Style can be specified to pick a specific face.
     style: Italic
