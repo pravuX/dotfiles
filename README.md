@@ -1,7 +1,7 @@
 # dotfiles
 **Personal configurations** of *Prabesh Subedi*
 
-- Font: SauceCodePro Nerd Font
+- Font: Ubuntu Mono
 - Terminal: Kitty
 
 ### As I constantly forget how to create symlinks, here is an example:
