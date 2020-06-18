@@ -193,7 +193,7 @@ alias sr="sudo reboot"
 alias vi="nvim"
 
 #for learning purposes
-alias lvim="vim -u ~/.vim/essential.vim -N"
+alias lvim="nvim -u ~/.vim/essential.vim -N"
 
 #git aliases
 alias gis="git status"
