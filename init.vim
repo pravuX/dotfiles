@@ -46,10 +46,10 @@ let g:nord_italic_comments = 1
 let g:nord_underline = 1
 colorscheme nord
 
-
-
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
 
 " fzf stuff
 nnoremap <leader>f :Files<CR>
@@ -83,6 +83,7 @@ nmap <leader>gr <Plug>(coc-references)
 
 " python-syntax
 let g:python_highlight_all = 1
+
 
 
 " settings and mappings
@@ -210,3 +211,25 @@ function! LightlineReadonly()
     let readonly = &readonly ? '[]' : ''
     return readonly
 endfunction
+
+" Vim syntax file
+" Language: Todo
+" Maintainer: Huy Tran
+" Latest Revision: 14 June 2020
+
+if exists("b:current_syntax")
+  finish
+endif
+
+" Custom conceal
+syntax match todoCheckbox "\[\ \]" conceal cchar=
+syntax match todoCheckbox "\[x\]" conceal cchar=
+
+let b:current_syntax = "todo"
+
+hi def link todoCheckbox Todo
+hi Conceal guibg=NONE
+
+setlocal cole=1
+
+nmap <leader>m 0lrx
