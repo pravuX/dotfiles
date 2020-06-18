@@ -15,10 +15,11 @@
 export HISTCONTROL=ignoreboth:erasedups
 
 # Prompt
+# --------------------------------------------------------------------
 #┌[~]
 #└ॐ
-PS1='╒[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n╘ λ\[\e[35m\] ▶\[\e[m\] '
-#PS1='┌[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n└ λ\[\e[35m\] ▶\[\e[m\] '
+PS1='╒[\[\e[32m\]\W\[\e[m\]]\[\e[31m\]$(__git_ps1)\[\e[m\]\n╘ λ\[\e[35m\] ▶\[\e[m\] '
+##PS1='┌[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n└ λ\[\e[35m\] ▶\[\e[m\] '
 
 # git stuff
 if [ -f ~/.bash_git ]; then
