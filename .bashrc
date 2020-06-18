@@ -17,8 +17,8 @@ export HISTCONTROL=ignoreboth:erasedups
 # Prompt
 #┌[~]
 #└ॐ
-PS1='┌[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n└ॐ\[\e[35m\] ▶\[\e[m\] '
-#PS1='┌[\[\e[32m\]\W\[\e[m\]]\n└\[\e[35m\]ॐ\[\e[m\] '
+PS1='╒[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n╘ λ\[\e[35m\] ▶\[\e[m\] '
+#PS1='┌[\[\e[32m\]\W\[\e[m\]]$(__git_ps1)\n└ λ\[\e[35m\] ▶\[\e[m\] '
 
 # git stuff
 if [ -f ~/.bash_git ]; then
@@ -192,6 +192,14 @@ alias vim="nvim"
 
 #for learning purposes
 alias lvim="vim -u ~/.vim/essential.vim -N"
+
+#git aliases
+alias gis="git status"
+alias gif="git fetch"
+alias gip="git push"
+alias gia="git add"
+alias giaa="git add -all"
+alias gic="git commit"
 
 #vi mode for bash
 set -o vi
