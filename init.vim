@@ -1,4 +1,3 @@
-
 "                                                  /$$   /$$
 "                                                  | $$  / $$
 "  /$$$$$$   /$$$$$$  /$$$$$$  /$$    /$$ /$$   /$$|  $$/ $$/
@@ -19,13 +18,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
-Plug 'arcticicestudio/nord-vim'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'neoclide/coc.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'tpope/vim-vividchalk'
-"Plug 'neoclide/coc.nvim'
 
 "Initialize plugin system
 call plug#end()
@@ -44,12 +42,11 @@ set background=dark
 let g:nord_cursor_line_number_background = 1
 let g:nord_uniform_diff_background = 1
 let g:nord_italic = 1
+let g:nord_italic_comments = 1
 let g:nord_underline = 1
 colorscheme nord
 
 
-" show whitespaces
-set list lcs=space:·,tab:»·
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -62,24 +59,25 @@ command! -bang -nargs=? -complete=dir Files
 
 " coc stuff
 " use <tab> for trigger completion and navigate to the next complete item
-"function! s:check_back_space() abort
-  "let col = col('.') - 1
-  "return !col || getline('.')[col - 1]  =~ '\s'
-"endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
-"inoremap <silent><expr> <tab>
-      "\ pumvisible() ? "\<c-n>" :
-      "\ <sid>check_back_space() ? "\<tab>" :
-      "\ coc#refresh() "" use <c-space>for trigger completion "inoremap <silent><expr> <c-space> coc#refresh()
-"inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-"inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>"
-"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
+inoremap <silent><expr> <tab>
+      \ pumvisible() ? "\<c-n>" :
+      \ <sid>check_back_space() ? "\<tab>" :
+      \ coc#refresh() "" use <c-space>for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>"
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
 
-"" Go to definitions
-"nmap <leader>gd <Plug>(coc-definition)
-"nmap <leader>gr <Plug>(coc-references)
+" Go to definitions
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
 
 
 
@@ -103,6 +101,8 @@ set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
 set wrap
 set showbreak=↪
+" show whitespaces
+set list lcs=space:·,tab:»·
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -166,14 +166,14 @@ set noshowmode " don't show status in the command buffer
 "Lightline config
 let g:lightline = {
     \ 'mode_map': {
-       \ 'n'  : 'N',
-       \ 'v'  : 'V',
-       \ 'V'  : 'V·L',
-       \ '' : 'V·B',
-       \ 'i'  : 'I',
-       \ 'R'  : 'R',
-       \ 'Rv' : 'V·R',
-       \ 'c'  : 'C',
+       \ 'n'  : 'n',
+       \ 'v'  : 'v',
+       \ 'V'  : 'v·l',
+       \ '' : 'v·b',
+       \ 'i'  : 'i',
+       \ 'R'  : 'r',
+       \ 'Rv' : 'v·r',
+       \ 'c'  : 'c',
     \ },
     \ 'colorscheme': 'nord',
     \ 'active': {

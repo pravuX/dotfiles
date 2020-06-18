@@ -13,6 +13,7 @@
 [[ $- != *i* ]] && return
 
 export HISTCONTROL=ignoreboth:erasedups
+export EDITOR=/usr/bin/nvim
 
 # Prompt
 # --------------------------------------------------------------------
@@ -189,7 +190,7 @@ alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
 #substitute nvim for vim
-alias vim="nvim"
+alias vi="nvim"
 
 #for learning purposes
 alias lvim="vim -u ~/.vim/essential.vim -N"
