@@ -15,6 +15,7 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/vim-orgymode'
 Plug 'tpope/vim-surround'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ap/vim-css-color'
@@ -211,25 +212,3 @@ function! LightlineReadonly()
     let readonly = &readonly ? '[]' : ''
     return readonly
 endfunction
-
-" Vim syntax file
-" Language: Todo
-" Maintainer: Huy Tran
-" Latest Revision: 14 June 2020
-
-if exists("b:current_syntax")
-  finish
-endif
-
-" Custom conceal
-syntax match todoCheckbox "\[\ \]" conceal cchar=
-syntax match todoCheckbox "\[x\]" conceal cchar=
-
-let b:current_syntax = "todo"
-
-hi def link todoCheckbox Todo
-hi Conceal guibg=NONE
-
-setlocal cole=1
-
-nmap <leader>m 0lrx
