@@ -18,15 +18,27 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/vim-orgymode'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'ap/vim-css-color'
-Plug 'vim-python/python-syntax'
-Plug 'itchyny/lightline.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'andreasvc/vim-256noir'
 Plug 'neoclide/coc.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+"colors and appearance
+Plug 'atahabaki/archman-vim'
+Plug 'srcery-colors/srcery-vim'
+Plug 'cocopon/iceberg.vim/'
+Plug 'jdsimcoe/hyper.vim'
+Plug 'ts-26a/vim-darkspace'
+Plug 'arcticicestudio/nord-vim'
+Plug 'haishanh/night-owl.vim'
+Plug 'rakr/vim-one'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'andreasvc/vim-256noir'
+
+Plug 'ap/vim-css-color'
+Plug 'vim-python/python-syntax'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'itchyny/lightline.vim'
+
 
 "Initialize plugin system
 call plug#end()
@@ -42,12 +54,15 @@ endif
 syntax enable
 set background=dark
 "nord config
-let g:nord_cursor_line_number_background = 1
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
-colorscheme nord
+"let g:nord_cursor_line_number_background = 1
+"let g:nord_uniform_diff_background = 1
+"let g:nord_italic = 1
+"let g:nord_italic_comments = 1
+"let g:nord_underline = 1
+
+" one configs
+let g:one_allow_italics = 1
+colorscheme one
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -104,7 +119,7 @@ set clipboard=unnamedplus " us os clipboard
 set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
 set wrap
-set showbreak=↪
+set showbreak=¬
 " show whitespaces
 set list lcs=space:·,tab:»·
 "set colorcolumn=80
@@ -179,7 +194,7 @@ let g:lightline = {
        \ 'Rv' : 'v·r',
        \ 'c'  : 'c',
     \ },
-    \ 'colorscheme': 'nord',
+    \ 'colorscheme': 'one',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename' ] ],
@@ -193,6 +208,9 @@ let g:lightline = {
     \   'fileencoding': 'LightlineFileencoding',
     \ },
     \ }
+let g:lightline.subseparator = {
+    \ 'left':'│' , 'right':'│'
+  \ }
 
 " join the modified indicator with filename
 function! LightlineFilename()
