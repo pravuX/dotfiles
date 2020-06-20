@@ -23,6 +23,7 @@ Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'andreasvc/vim-256noir'
 Plug 'neoclide/coc.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
