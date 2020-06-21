@@ -208,14 +208,18 @@ let g:lightline = {
     \   'fileencoding': 'LightlineFileencoding',
     \ },
     \ }
+let g:lightline.separator = {
+    \ 'left': '', 'right': ''
+  \ }
+"│ this may come in handy
 let g:lightline.subseparator = {
-    \ 'left':'│' , 'right':'│'
+    \ 'left':'' , 'right':''
   \ }
 
 " join the modified indicator with filename
 function! LightlineFilename()
-    let filename = expand('%:t') !=# '' ? '‹‹' . expand('%:t') . '››' : '‹‹no name››'
-    let modified = &modified ? '[+]' : ''
+    let filename = expand('%:t') !=# '' ? '｢' . expand('%:t') . '｣' : '｢no name｣'
+    let modified = &modified ? '｢•｣' : ''
     return filename . modified
 endfunction
 
