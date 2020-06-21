@@ -35,7 +35,7 @@ colors:
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
-  size: 15
+  size: 16
   normal:
     family: OperatorMono Nerd Font
     # Style can be specified to pick a specific face.
@@ -45,12 +45,13 @@ font:
   bold:
     family: OperatorMono Nerd Font
     # Style can be specified to pick a specific face.
-    style: Bold
+    style: Medium
 
   # The italic font face
   italic:
     family: OperatorMono Nerd Font
     # Style can be specified to pick a specific face.
     style: Medium Italic
+
 window:
     decorations: 'none'
