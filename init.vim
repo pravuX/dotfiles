@@ -15,13 +15,15 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
-Plug 'neoclide/coc.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 "colors and appearance
 Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
+Plug 'fenetikm/falcon'
 Plug 'atahabaki/archman-vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'cocopon/iceberg.vim/'
@@ -52,10 +54,7 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-
-" one configs
-let g:one_allow_italics = 1
-colorscheme gruvbox
+colorscheme one
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -68,28 +67,9 @@ nnoremap <leader>F :Files ~/<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" coc stuff
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
 
-inoremap <silent><expr> <tab>
-      \ pumvisible() ? "\<c-n>" :
-      \ <sid>check_back_space() ? "\<tab>" :
-      \ coc#refresh() "" use <c-space>for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
-
-" Go to definitions
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-
+" deoplete stuff
+"let g:deoplete#enable_at_startup = 1
 
 
 " python-syntax
@@ -98,22 +78,22 @@ let g:python_highlight_all = 1
 
 
 " settings and mappings
-set nocp " make sure vim is not in compatible mode
+set nocp                   " make sure vim is not in compatible mode
 syntax on
-set number relativenumber " show number
+set number relativenumber  " show number
 set smartindent
-set sw=4 " no of spaces when shift indenting
-set ts=4 " no of visual spaces per tab
-set softtabstop=4 " no of spaces in tab when editing
-set expandtab " convert tab to spaces
-"set cursorline  "hilight current line
-set clipboard=unnamedplus " us os clipboard
+set sw=4                   " no of spaces when shift indenting
+set ts=4                   " no of visual spaces per tab
+set softtabstop=4          " no of spaces in tab when editing
+set expandtab              " convert tab to spaces
+set cursorline             " hilight current line
+set clipboard=unnamedplus  " us os clipboard
 set noswapfile
-set encoding=utf-8 "neo vim uses utf-8 by default
+set encoding=utf-8         "neo vim uses utf-8 by default
 set wrap
 set showbreak=¬
-" show whitespaces
-set list lcs=space:·,tab:»·
+set updatetime=100
+set list lcs=space:·,tab:»· " show whitespaces
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -124,10 +104,8 @@ set incsearch
 set hlsearch
 
 set noruler
-set noshowmode " don't show status in the command buffer
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-set splitbelow splitright
+set noshowmode            " don't show status in the command buffer
+set splitbelow splitright " splits open at the bottom and right
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -186,7 +164,7 @@ let g:lightline = {
        \ 'Rv' : 'v·r',
        \ 'c'  : 'c',
     \ },
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme': 'one',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename' ] ],
