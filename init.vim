@@ -55,7 +55,7 @@ set background=dark
 
 " one configs
 let g:one_allow_italics = 1
-colorscheme one
+colorscheme gruvbox
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -100,14 +100,13 @@ let g:python_highlight_all = 1
 " settings and mappings
 set nocp " make sure vim is not in compatible mode
 syntax on
-set number
-set relativenumber " show number
+set number relativenumber " show number
 set smartindent
 set sw=4 " no of spaces when shift indenting
 set ts=4 " no of visual spaces per tab
 set softtabstop=4 " no of spaces in tab when editing
 set expandtab " convert tab to spaces
-set cursorline  "hilight current line
+"set cursorline  "hilight current line
 set clipboard=unnamedplus " us os clipboard
 set noswapfile
 set encoding=utf-8 "neo vim uses utf-8 by default
@@ -156,8 +155,6 @@ map <C-j> <C-W>j
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
-inoremap jj <ESC>
-
 " Use Esc to quit builtin terminal
 if exists(":tnoremap")
     tnoremap <ESC>   <C-\><C-n>
@@ -189,7 +186,7 @@ let g:lightline = {
        \ 'Rv' : 'v·r',
        \ 'c'  : 'c',
     \ },
-    \ 'colorscheme': 'one',
+    \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'readonly', 'filename' ] ],
