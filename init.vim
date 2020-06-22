@@ -15,14 +15,13 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/vim-orgymode'
-Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 "colors and appearance
+Plug 'rakr/vim-one'
 Plug 'atahabaki/archman-vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'cocopon/iceberg.vim/'
@@ -30,7 +29,6 @@ Plug 'jdsimcoe/hyper.vim'
 Plug 'ts-26a/vim-darkspace'
 Plug 'arcticicestudio/nord-vim'
 Plug 'haishanh/night-owl.vim'
-Plug 'rakr/vim-one'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'andreasvc/vim-256noir'
 
@@ -131,6 +129,9 @@ set smartcase
 set incsearch
 set hlsearch
 
+set noruler
+set noshowmode " don't show status in the command buffer
+
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 
@@ -160,6 +161,8 @@ map <C-j> <C-W>j
 " cd to current file directory
 nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
+inoremap jj <ESC>
+
 " Use Esc to quit builtin terminal
 if exists(":tnoremap")
     tnoremap <ESC>   <C-\><C-n>
@@ -177,9 +180,6 @@ inoremap <silent> <F11> <C-O>:set spell!<cr>
 nnoremap c "_c
 nnoremap C "_C
 nnoremap cc "_cc
-
-set noruler
-set noshowmode " don't show status in the command buffer
 
 
 "Lightline config

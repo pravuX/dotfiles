@@ -37,21 +37,21 @@ font:
   # The normal (roman) font face to use.
   size: 16
   normal:
-    family: OperatorMono Nerd Font
+    family: xos4 Terminus
     # Style can be specified to pick a specific face.
-    style: Book
+    style: Regular
 
   # The bold font face
   bold:
-    family: OperatorMono Nerd Font
+    family: xos4 Terminus
     # Style can be specified to pick a specific face.
-    style: Medium
+    style: Regular
 
   # The italic font face
-  italic:
-    family: OperatorMono Nerd Font
-    # Style can be specified to pick a specific face.
-    style: Medium Italic
+  #italic:
+    #family: OperatorMono Nerd Font
+    ## Style can be specified to pick a specific face.
+    #style: Medium Italic
 
 window:
     decorations: 'none'
