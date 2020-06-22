@@ -1,7 +1,7 @@
 # dotfiles
 **Personal configurations** of *Prabesh Subedi*
 
-- Font: x0s4 Terminus
+- Font: x0s4 Terminus (*funky*)
 - Terminal: KDE Konsole(__good ligature support + some shenanigans__)
 ### As I constantly forget how to create symlinks, here is an example:
 `ln -s [path/to/source] [shortcut]`

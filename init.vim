@@ -200,12 +200,13 @@ let g:lightline = {
     \   'fileencoding': 'LightlineFileencoding',
     \ },
     \ }
+
 let g:lightline.separator = {
-    \ 'left': '', 'right': ''
+    \ 'left': '', 'right': ''
   \ }
 "│ this may come in handy
 let g:lightline.subseparator = {
-    \ 'left':'' , 'right':''
+    \ 'left':'' , 'right':''
   \ }
 
 " join the modified indicator with filename
