@@ -31,6 +31,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'andreasvc/vim-256noir'
+Plug 'morhetz/gruvbox'
 
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
@@ -51,12 +52,6 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-"nord config
-"let g:nord_cursor_line_number_background = 1
-"let g:nord_uniform_diff_background = 1
-"let g:nord_italic = 1
-"let g:nord_italic_comments = 1
-"let g:nord_underline = 1
 
 " one configs
 let g:one_allow_italics = 1
@@ -213,7 +208,7 @@ let g:lightline.separator = {
   \ }
 "│ this may come in handy
 let g:lightline.subseparator = {
-    \ 'left':'' , 'right':''
+    \ 'left':'' , 'right':''
   \ }
 
 " join the modified indicator with filename
