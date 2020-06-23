@@ -255,3 +255,6 @@ let g:python_highlight_all = 1
 
 " neoterm config
 let g:neoterm_default_mod = 'belowright'
+
+" vimwiki
+let g:vimwiki_global_ext = 0
