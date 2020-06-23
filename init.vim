@@ -78,21 +78,21 @@ let g:python_highlight_all = 1
 
 
 " settings and mappings
-set nocp                   " make sure vim is not in compatible mode
+set nocp                    " make sure vim is not in compatible mode
 syntax on
-set number relativenumber  " show number
+set number relativenumber   " show number
 set smartindent
-set sw=4                   " no of spaces when shift indenting
-set ts=4                   " no of visual spaces per tab
-set softtabstop=4          " no of spaces in tab when editing
-set expandtab              " convert tab to spaces
-set cursorline             " hilight current line
-set clipboard=unnamedplus  " us os clipboard
+set sw=4                    " no of spaces when shift indenting
+set ts=4                    " no of visual spaces per tab
+set softtabstop=4           " no of spaces in tab when editing
+set expandtab               " convert tab to spaces
+set cursorline              " hilight current line
+set clipboard=unnamedplus   " us os clipboard
 set noswapfile
-set encoding=utf-8         "neo vim uses utf-8 by default
+set encoding=utf-8          " neo vim uses utf-8 by default
 set wrap
 set showbreak=¬
-set updatetime=100
+set updatetime=100          " for git gutter
 set list lcs=space:·,tab:»· " show whitespaces
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
