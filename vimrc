@@ -63,6 +63,8 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
+let gruvbox_italic = 1
+let gruvbox_italicize_comments = 0
 colorscheme gruvbox
 
 " For Json
@@ -98,6 +100,11 @@ set hlsearch
 set noruler
 set noshowmode               " don't show status in the command buffer
 set splitbelow splitright    " splits open at the bottom and right
+
+" Change cursor depending on the mode (FOR KDE KONSOLE)
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -245,3 +252,6 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
 
 " python-syntax config
 let g:python_highlight_all = 1
+
+" vimwiki
+let g:vimwiki_global_ext = 0
