@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vimwiki/vimwiki'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -62,8 +63,7 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-let g:onedark_terminal_italics = 1
-colorscheme onedark
+colorscheme gruvbox
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -103,10 +103,10 @@ set splitbelow splitright    " splits open at the bottom and right
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Resize split windows using <Alt> and h,j,k,l, inspiration from
-nnoremap <silent> <A-h> <C-w><
-nnoremap <silent> <A-l> <C-w>>
-nnoremap <silent> <A-j> <C-W>-
-nnoremap <silent> <A-k> <C-W>+
+nnoremap <silent> <leader>n <C-w><
+nnoremap <silent> <leader>m <C-w>>
+nnoremap <silent> <leader>N <C-W>-
+nnoremap <silent> <leader>M <C-W>+
 
 " Yank from current cursor position to the end of the line (make it
 " consistent with the behavior of D, C)
@@ -152,7 +152,7 @@ nnoremap cc "_cc
 "Lightline config
 set laststatus=2             " Clear statusline
 let g:lightline = {
-    \ 'colorscheme': 'onedark',
+    \ 'colorscheme': 'gruvbox',
     \ }
 
 let g:lightline.mode_map = {
