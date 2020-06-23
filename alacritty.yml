@@ -35,23 +35,23 @@ colors:
 # Font configuration (changes require restart)
 font:
   # The normal (roman) font face to use.
-  size: 14
+  size: 18
   normal:
-    family: Fira Code
+    family: Terminus
     # Style can be specified to pick a specific face.
-    style: Light
+    style: Regular
 
   # The bold font face
   bold:
-    family: Fira Code
-    # Style can be specified to pick a specific face.
-    style: SemiBold
-
-  # The italic font face
-  italic:
     family: Terminus
     # Style can be specified to pick a specific face.
     style: Bold
+
+  # The italic font face
+  italic:
+    family: OperatorMono Nerd Font
+    # Style can be specified to pick a specific face.
+    style: Extra Light Italic
 
 window:
     decorations: 'none'
