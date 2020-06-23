@@ -11,6 +11,8 @@
 "|__/
 "
 " Personal Configurations of Prabesh Subedi
+
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
