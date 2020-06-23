@@ -17,7 +17,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
-Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -244,6 +243,3 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
 
 " python-syntax config
 let g:python_highlight_all = 1
-
-" neoterm config
-let g:neoterm_default_mod = 'belowright'
