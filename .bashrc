@@ -13,7 +13,7 @@
 [[ $- != *i* ]] && return
 
 export HISTCONTROL=ignoreboth:erasedups
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
 
 # Prompt
 # --------------------------------------------------------------------

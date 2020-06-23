@@ -64,8 +64,8 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-let g:one_allow_italics = 1
-colorscheme one
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 
 " For Json
