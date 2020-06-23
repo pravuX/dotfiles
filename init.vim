@@ -11,6 +11,8 @@
 "|__/
 "
 " Personal Configurations of Prabesh Subedi
+
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
@@ -40,14 +42,13 @@ Plug 'sickill/vim-monokai'
 Plug 'junegunn/seoul256.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'iCyMind/NeoSolarized'
-
+Plug 'nerdypepper/agila.vim'
 
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
-
 
 "Initialize plugin system
 call plug#end()
@@ -62,31 +63,12 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
+let g:one_allow_italics = 1
 colorscheme one
+
 
 " For Json
 autocmd FileType json syntax match Comment +\/\/.\+$+
-
-
-
-" fzf stuff
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>F :Files ~/<CR>
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-
-" deoplete stuff
-"let g:deoplete#enable_at_startup = 1
-
-
-" Python hilighting
-let g:python_highlight_all = 1
-
-
-" neoterm stuff
-let g:neoterm_default_mod = 'belowright'
-
 
 
 " settings and mappings
@@ -94,18 +76,18 @@ set nocp                    " make sure vim is not in compatible mode
 syntax on
 set number relativenumber   " show number
 set smartindent
-set sw=4                    " no of spaces when shift indenting
-set ts=4                    " no of visual spaces per tab
-set softtabstop=4           " no of spaces in tab when editing
-set expandtab               " convert tab to spaces
-set cursorline              " hilight current line
-set clipboard=unnamedplus   " us os clipboard
+set sw=4                     " no of spaces when shift indenting
+set ts=4                     " no of visual spaces per tab
+set softtabstop=4            " no of spaces in tab when editing
+set expandtab                " convert tab to spaces
+set cursorline               " hilight current line
+set clipboard=unnamedplus    " us os clipboard
 set noswapfile
-set encoding=utf-8          " neo vim uses utf-8 by default
+set encoding=utf-8           " neo vim uses utf-8 by default
 set wrap
 set showbreak=¬
-set updatetime=100          " for git gutter
-set list lcs=space:·,tab:»· " show whitespaces
+set updatetime=100           " for git gutter
+set list lcs=space:·,tab:»\  " show whitespaces
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
 
@@ -116,13 +98,13 @@ set incsearch
 set hlsearch
 
 set noruler
-set noshowmode            " don't show status in the command buffer
-set splitbelow splitright " splits open at the bottom and right
+set noshowmode              " don't show status in the command buffer
+set splitbelow splitright   " splits open at the bottom and right
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Resize split windows using <Alt> and h,j,k,l, inspiration from
+" Resize split windows using <Alt> and h,j,k,l
 nnoremap <silent> <M-h> <C-w><
 nnoremap <silent> <M-l> <C-w>>
 nnoremap <silent> <M-j> <C-W>-
@@ -131,7 +113,6 @@ nnoremap <silent> <M-k> <C-W>+
 " Yank from current cursor position to the end of the line (make it
 " consistent with the behavior of D, C)
 nnoremap Y y$
-
 
 " move between buffers
 map <C-Left> <Esc>:bprev<CR>
@@ -169,45 +150,69 @@ nnoremap C "_C
 nnoremap cc "_cc
 
 
+" Plugins specific configurations
+
+
 "Lightline config
 let g:lightline = {
-    \ 'mode_map': {
-       \ 'n'  : 'n',
-       \ 'v'  : 'v',
-       \ 'V'  : 'v·l',
-       \ '' : 'v·b',
-       \ 'i'  : 'i',
-       \ 'R'  : 'r',
-       \ 'Rv' : 'v·r',
-       \ 'c'  : 'c',
-       \ 't'  : 't',
-    \ },
     \ 'colorscheme': 'one',
-    \ 'active': {
+    \ }
+
+let g:lightline.mode_map = {
+    \ 'n'  : 'n',
+    \ 'v'  : 'v',
+    \ 'V'  : 'v·l',
+    \ '' : 'v·b',
+    \ 'i'  : 'i',
+    \ 'R'  : 'r',
+    \ 'Rv' : 'v·r',
+    \ 'c'  : 'c',
+    \ 't'  : 't',
+    \}
+
+let g:lightline.tabline = {
+    \ 'left': [ [ 'tabs' ] ],
+    \ 'right': [ ] }
+
+let g:lightline.tab = {
+    \ 'active': [ 'tabnum', 'filename' ],
+    \ 'inactive': [ 'tabnum', 'filename' ] }
+
+let g:lightline.active = {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
     \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-    \ },
-    \ 'component': {
-    \ },
-    \ 'component_function': {
+    \
+    \}
+
+let g:lightline.component_function = {
     \   'filename': 'LightlineFilename',
     \   'fileformat': 'LightlineFileFormat',
     \   'readonly': 'LightlineReadonly',
     \   'fileencoding': 'LightlineFileencoding',
     \   'gitbranch': 'gitbranch#name'
-    \ },
-    \ }
+    \
+    \}
+
+let g:lightline.tab_component_function = {
+    \ 'filename': 'lightline#tab#filename'
+    \}
 
 let g:lightline.separator = {
     \ 'left': '', 'right': ''
   \ }
+
 "│ this may come in handy
 let g:lightline.subseparator = {
     \ 'left':'' , 'right':''
   \ }
+
+let g:lightline.enable = {
+    \ 'statusline': 1,
+    \ 'tabline': 1
+    \ }
 
 " join the modified indicator with filename
 function! LightlineFilename()
@@ -229,3 +234,24 @@ function! LightlineReadonly()
     let readonly = &readonly ? '[]' : ''
     return readonly
 endfunction
+
+
+" fzf config
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>F :Files ~/<CR>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2
+
+
+" deoplete config
+"let g:deoplete#enable_at_startup = 1
+
+
+" python-syntax config
+let g:python_highlight_all = 1
+
+
+" neoterm config
+let g:neoterm_default_mod = 'belowright'
