@@ -15,14 +15,16 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
+Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 "colors and appearance
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
+Plug 'mhinz/vim-janah'
 Plug 'fenetikm/falcon'
 Plug 'atahabaki/archman-vim'
 Plug 'srcery-colors/srcery-vim'
@@ -34,11 +36,17 @@ Plug 'haishanh/night-owl.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'andreasvc/vim-256noir'
 Plug 'morhetz/gruvbox'
+Plug 'sickill/vim-monokai'
+Plug 'junegunn/seoul256.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'iCyMind/NeoSolarized'
+
 
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 
 
 "Initialize plugin system
@@ -72,8 +80,12 @@ command! -bang -nargs=? -complete=dir Files
 "let g:deoplete#enable_at_startup = 1
 
 
-" python-syntax
+" Python hilighting
 let g:python_highlight_all = 1
+
+
+" neoterm stuff
+let g:neoterm_default_mod = 'belowright'
 
 
 
@@ -120,6 +132,7 @@ nnoremap <silent> <M-k> <C-W>+
 " consistent with the behavior of D, C)
 nnoremap Y y$
 
+
 " move between buffers
 map <C-Left> <Esc>:bprev<CR>
 map <C-Right> <Esc>:bnext<CR>
@@ -136,6 +149,10 @@ nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 " Use Esc to quit builtin terminal
 if exists(":tnoremap")
     tnoremap <ESC>   <C-\><C-n>
+    tnoremap <C-h> <C-\><C-n><C-W>h
+    tnoremap <C-l> <C-\><C-n><C-W>l
+    tnoremap <C-k> <C-\><C-n><C-W>k
+    tnoremap <C-j> <C-\><C-n><C-W>j
 endif
 
 " Automatically delete all trailing whitespace and newlines at end of file on save.
@@ -163,11 +180,15 @@ let g:lightline = {
        \ 'R'  : 'r',
        \ 'Rv' : 'v·r',
        \ 'c'  : 'c',
+       \ 't'  : 't',
     \ },
     \ 'colorscheme': 'one',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'readonly', 'filename' ] ],
+    \             [ 'gitbranch', 'readonly', 'filename', ] ],
+    \   'right': [ [ 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'component': {
     \ },
@@ -176,6 +197,7 @@ let g:lightline = {
     \   'fileformat': 'LightlineFileFormat',
     \   'readonly': 'LightlineReadonly',
     \   'fileencoding': 'LightlineFileencoding',
+    \   'gitbranch': 'gitbranch#name'
     \ },
     \ }
 
