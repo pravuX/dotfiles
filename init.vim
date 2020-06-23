@@ -81,7 +81,6 @@ set sw=4                     " no of spaces when shift indenting
 set ts=4                     " no of visual spaces per tab
 set softtabstop=4            " no of spaces in tab when editing
 set expandtab                " convert tab to spaces
-set cursorline               " hilight current line
 set clipboard=unnamedplus    " us os clipboard
 set noswapfile
 set encoding=utf-8           " neo vim uses utf-8 by default
@@ -202,12 +201,12 @@ let g:lightline.tab_component_function = {
     \}
 
 let g:lightline.separator = {
-    \ 'left': '', 'right': ''
+    \ 'left': '', 'right': ''
   \ }
 
 "│ this may come in handy
 let g:lightline.subseparator = {
-    \ 'left':'' , 'right':''
+    \ 'left':'' , 'right':''
   \ }
 
 let g:lightline.enable = {
