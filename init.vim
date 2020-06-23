@@ -216,8 +216,8 @@ let g:lightline.enable = {
 
 " join the modified indicator with filename
 function! LightlineFilename()
-    let filename = expand('%:t') !=# '' ? '｢' . expand('%:t') . '｣' : '｢no name｣'
-    let modified = &modified ? '｢•｣' : ''
+    let filename = expand('%:t') !=# '' ? expand('%:t') : 'no name'
+    let modified = &modified ? ' ｢◆｣' : ''
     return filename . modified
 endfunction
 
