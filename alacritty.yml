@@ -6,7 +6,7 @@ colors:
     foreground: '#abb2bf'
   cursor:
     text: '#282c34'
-    cursor: '#ff9126'
+    cursor: '#61afef'
 
   # Normal colors
   normal:
