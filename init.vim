@@ -50,7 +50,7 @@ endif
 syntax enable
 set background=dark
 let gruvbox_italic = 1
-let gruvbox_italicize_comments = 0
+let gruvbox_italicize_comments = 1
 let g:gruvbox_sign_column = 'bg1'
 let g:gruvbox_number_column = 'bg1'
 colorscheme gruvbox
@@ -232,7 +232,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>F :Files ~/<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-autocmd! FileType fzf set laststatus=0 noshowmode noruler
+autocmd! FileType fzf set laststatus=0 noshowmode noruler norelativenumber
   \| autocmd BufLeave <buffer> set laststatus=2
 
 
