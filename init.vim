@@ -23,6 +23,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "colors and appearance
 Plug 'rakr/vim-one'
@@ -73,9 +74,10 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
 " settings and mappings
-set nocp                    " make sure vim is not in compatible mode
+set nocp                     " make sure vim is not in compatible mode
 syntax on
-set number relativenumber   " show number
+set number relativenumber    " show number
+set signcolumn=yes           " always show signcolumn
 set smartindent
 set sw=4                     " no of spaces when shift indenting
 set ts=4                     " no of visual spaces per tab
@@ -85,8 +87,10 @@ set clipboard=unnamedplus    " us os clipboard
 set noswapfile
 set encoding=utf-8           " neo vim uses utf-8 by default
 set wrap
+set linebreak                " make softwrap
 set showbreak=¬
 set updatetime=100           " for git gutter
+set timeoutlen=500 ttimeoutlen=0 " make esc faster(0 to 500 miliseconds
 set list lcs=space:·,tab:»\  " show whitespaces
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -183,7 +187,7 @@ let g:lightline.active = {
     \             [ 'gitbranch', 'readonly', 'filename', ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \              [ 'cocstatus', 'fileformat', 'fileencoding', 'filetype' ] ]
     \
     \}
 
@@ -192,8 +196,8 @@ let g:lightline.component_function = {
     \   'fileformat': 'LightlineFileFormat',
     \   'readonly': 'LightlineReadonly',
     \   'fileencoding': 'LightlineFileencoding',
-    \   'gitbranch': 'gitbranch#name'
-    \
+    \   'gitbranch': 'gitbranch#name',
+    \   'cocstatus': 'coc#status'
     \}
 
 let g:lightline.tab_component_function = {
@@ -245,10 +249,6 @@ autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2
 
 
-" deoplete config
-"let g:deoplete#enable_at_startup = 1
-
-
 " python-syntax config
 let g:python_highlight_all = 1
 
@@ -256,5 +256,42 @@ let g:python_highlight_all = 1
 " neoterm config
 let g:neoterm_default_mod = 'belowright'
 
+
 " vimwiki
 let g:vimwiki_global_ext = 0
+
+
+" coc config
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+
+" Force lightline to update
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
