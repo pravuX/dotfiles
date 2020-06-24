@@ -86,7 +86,8 @@ set noswapfile
 set encoding=utf-8
 set wrap
 set showbreak=¬
-set updatetime=100           " for git gutter
+set updatetime=100           " for git gutter (update time set to 100 miliseconds(ms))
+set timeoutlen=500 ttimeoutlen=0 " make esc faster(0 to 500 miliseconds
 set list lcs=space:·,tab:»\  " show whitespaces
 "set colorcolumn=80
 "highlight ColorColumn ctermbg=0 guibg=lightgrey
