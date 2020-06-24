@@ -85,6 +85,7 @@ set clipboard=unnamedplus    " us os clipboard
 set noswapfile
 set encoding=utf-8
 set wrap
+set linebreak                " make softwrap
 set showbreak=¬
 set updatetime=100           " for git gutter (update time set to 100 miliseconds(ms))
 set timeoutlen=500 ttimeoutlen=0 " make esc faster(0 to 500 miliseconds
