@@ -27,6 +27,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "colors and appearance
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 
 Plug 'ap/vim-css-color'
@@ -48,8 +49,11 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-let g:onedark_terminal_italics = 1
-colorscheme onedark
+let gruvbox_italic = 1
+let gruvbox_italicize_comments = 0
+let g:gruvbox_sign_column = 'bg1'
+let g:gruvbox_number_column = 'bg1'
+colorscheme gruvbox
 
 
 " For Json
@@ -116,7 +120,7 @@ nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
 " Use Esc to quit builtin terminal
 if exists(":tnoremap")
-    tnoremap <ESC>   <C-\><C-n>
+    tnoremap <expr> <Esc> (&filetype == "fzf") ? "<Esc>" : "<c-\><c-n>"
     tnoremap <C-h> <C-\><C-n><C-W>h
     tnoremap <C-l> <C-\><C-n><C-W>l
     tnoremap <C-k> <C-\><C-n><C-W>k
@@ -142,7 +146,7 @@ nnoremap cc "_cc
 
 "Lightline config
 let g:lightline = {
-    \ 'colorscheme': 'one',
+    \ 'colorscheme': 'gruvbox',
     \ }
 
 let g:lightline.mode_map = {
@@ -245,7 +249,6 @@ let g:vimwiki_global_ext = 0
 
 
 " coc config
-
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
