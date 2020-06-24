@@ -25,22 +25,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "colors and appearance
 Plug 'joshdick/onedark.vim'
-Plug 'mhinz/vim-janah'
-Plug 'fenetikm/falcon'
-Plug 'atahabaki/archman-vim'
-Plug 'srcery-colors/srcery-vim'
-Plug 'cocopon/iceberg.vim/'
-Plug 'jdsimcoe/hyper.vim'
-Plug 'ts-26a/vim-darkspace'
 Plug 'arcticicestudio/nord-vim'
-Plug 'haishanh/night-owl.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'andreasvc/vim-256noir'
 Plug 'morhetz/gruvbox'
 Plug 'sickill/vim-monokai'
-Plug 'junegunn/seoul256.vim'
-Plug 'jacoborus/tender.vim'
-Plug 'iCyMind/NeoSolarized'
 Plug 'nerdypepper/agila.vim'
 
 Plug 'ap/vim-css-color'
@@ -59,13 +46,16 @@ let mapleader = ","
 
 "true colors
 if (has("termguicolors"))
- set termguicolors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 syntax enable
 set background=dark
 let gruvbox_italic = 1
 let gruvbox_italicize_comments = 0
 let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_number_column = 'bg0'
 colorscheme gruvbox
 
 " For Json

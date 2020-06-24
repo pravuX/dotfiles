@@ -17,7 +17,6 @@
 call plug#begin('~/.vim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vimwiki/vimwiki'
 Plug 'airblade/vim-gitgutter'
 Plug 'kassio/neoterm'
@@ -28,23 +27,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "colors and appearance
 Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
-Plug 'mhinz/vim-janah'
-Plug 'fenetikm/falcon'
-Plug 'atahabaki/archman-vim'
-Plug 'srcery-colors/srcery-vim'
-Plug 'cocopon/iceberg.vim/'
-Plug 'jdsimcoe/hyper.vim'
-Plug 'ts-26a/vim-darkspace'
 Plug 'arcticicestudio/nord-vim'
-Plug 'haishanh/night-owl.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'andreasvc/vim-256noir'
-Plug 'morhetz/gruvbox'
-Plug 'sickill/vim-monokai'
-Plug 'junegunn/seoul256.vim'
-Plug 'jacoborus/tender.vim'
-Plug 'iCyMind/NeoSolarized'
-Plug 'nerdypepper/agila.vim'
 
 Plug 'ap/vim-css-color'
 Plug 'vim-python/python-syntax'
@@ -65,7 +48,7 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-let g:onedark_terminal_italics=1
+let g:onedark_terminal_italics = 1
 colorscheme onedark
 
 
