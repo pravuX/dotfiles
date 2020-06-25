@@ -164,6 +164,9 @@ let g:lightline.mode_map = {
     \ 'i'  : 'i',
     \ 'R'  : 'r',
     \ 'Rv' : 'v·r',
+    \ 's'  : 's',
+    \ 'S'  : 's·l',
+    \ '' : 's·b',
     \ 'c'  : 'c',
     \ 't'  : 't',
     \}

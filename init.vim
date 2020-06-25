@@ -51,7 +51,7 @@ endif
 syntax enable
 set background=dark
 let gruvbox_italic = 1
-let gruvbox_italicize_comments = 1
+let gruvbox_italicize_comments = 0
 let g:gruvbox_sign_column = 'bg1'
 let g:gruvbox_number_column = 'bg1'
 colorscheme gruvbox
@@ -158,6 +158,9 @@ let g:lightline.mode_map = {
     \ 'i'  : 'i',
     \ 'R'  : 'r',
     \ 'Rv' : 'v·r',
+    \ 's'  : 's',
+    \ 'S'  : 's·l',
+    \ '' : 's·b',
     \ 'c'  : 'c',
     \ 't'  : 't',
     \}
@@ -281,11 +284,11 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
     highlight = {
-        enable = true,                    -- false will disable the whole extension
+        enable = false,                    -- false will disable the whole extension
         disable = {},        -- list of language that will be disabled
     },
     incremental_selection = {
-        enable = true,
+        enable = false,
         disable = {},
         keymaps = {                       -- mappings for incremental selection (visual mappings)
           init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
