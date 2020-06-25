@@ -22,6 +22,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "colors and appearance
@@ -192,12 +193,12 @@ let g:lightline.tab_component_function = {
     \}
 
 let g:lightline.separator = {
-    \ 'left': '', 'right': ''
+    \ 'left': '', 'right': ''
   \ }
 
 "│ this may come in handy
 let g:lightline.subseparator = {
-    \ 'left':'' , 'right':''
+    \ 'left':'' , 'right':''
   \ }
 
 let g:lightline.enable = {
@@ -207,8 +208,8 @@ let g:lightline.enable = {
 
 " join the modified indicator with filename
 function! LightlineFilename()
-    let filename = expand('%:t') !=# '' ? expand('%:t') : 'no name'
-    let modified = &modified ? ' ｢◆｣' : ''
+    let filename = expand('%:t') !=# '' ? '｢' . expand('%:t') . '｣' : '｢no name｣'
+    let modified = &modified ? '｢•｣' : ''
     return filename . modified
 endfunction
 
@@ -232,7 +233,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>F :Files ~/<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
-autocmd! FileType fzf set laststatus=0 noshowmode noruler norelativenumber
+autocmd! FileType fzf set laststatus=0 noshowmode noruler norelativenumber signcolumn=no
   \| autocmd BufLeave <buffer> set laststatus=2
 
 
@@ -249,17 +250,11 @@ let g:vimwiki_global_ext = 0
 
 
 " coc config
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" Use tab to navigate completion menu
+inoremap <expr><TAB>
+      \ pumvisible() ? "\<C-n>" :"\<TAB>"
+inoremap <expr><S-TAB>
+      \ pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -281,3 +276,24 @@ nmap <leader>gr <Plug>(coc-references)
 
 " Force lightline to update
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+" treesitter config
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,                    -- false will disable the whole extension
+        disable = {},        -- list of language that will be disabled
+    },
+    incremental_selection = {
+        enable = true,
+        disable = {},
+        keymaps = {                       -- mappings for incremental selection (visual mappings)
+          init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
+          node_incremental = "grn",       -- increment to the upper named parent
+          scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
+          node_decremental = "grm",      -- decrement to the previous node
+        }
+    },
+    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
+}
+EOF
