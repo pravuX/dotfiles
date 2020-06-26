@@ -83,7 +83,6 @@ set updatetime=100           " for git gutter (update time set to 100 milisecond
 set timeoutlen=500 ttimeoutlen=0 " make esc faster(0 to 500 miliseconds
 set list lcs=space:·,tab:»\  " show whitespaces
 "set colorcolumn=80
-"highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Intelligent Searching
 set ignorecase
