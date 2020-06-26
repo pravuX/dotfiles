@@ -55,7 +55,7 @@ set background=dark
 let gruvbox_italic = 1
 let gruvbox_italicize_comments = 0
 let g:gruvbox_sign_column = 'bg1'
-let g:gruvbox_number_column = 'bg0'
+let g:gruvbox_number_column = 'bg1'
 colorscheme gruvbox
 
 " For Json
@@ -66,7 +66,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 set nocp                     " make sure vim is not in compatible mode
 syntax on
 set number relativenumber    " show number
-"set signcolumn=yes           " always show signcolumn
+set signcolumn=yes           " always show signcolumn
 set smartindent
 set sw=4                     " no of spaces when shift indenting
 set ts=4                     " no of visual spaces per tab
