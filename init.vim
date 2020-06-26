@@ -253,6 +253,7 @@ endfunction
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>F :Files ~/<CR>
 nnoremap <leader>b :Buffers<CR>
+" auto settings when fzf opens
 autocmd! FileType fzf set laststatus=0 noshowmode noruler norelativenumber signcolumn=no
   \| autocmd BufLeave <buffer> set laststatus=2
 
@@ -265,7 +266,7 @@ let g:coc_fzf_opts = ['--reverse', '--no-info', '--cycle']
 
 " open FZF and choose floating window
 if has('nvim')
-    let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.4, 'yoffset': 0 } }
+    let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.4, 'yoffset': 0.25 } }
 endif
 
 " empty value to disable preview window altogether
