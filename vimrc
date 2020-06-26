@@ -243,6 +243,7 @@ endfunction
 " fzf config
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>F :Files ~/<CR>
+nnoremap <leader>b :Buffers<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
@@ -292,3 +293,16 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
 nnoremap <leader>d :Vex<CR>  " browse the current vim directory
+
+
+" gitgutter config
+
+" xcode like git gutter signs
+let g:gitgutter_sign_added = '┃'
+let g:gitgutter_sign_modified = '┃'
+let g:gitgutter_sign_modified_removed = '┃'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
+
+" made change hunk color blue
+hi! link GitGutterChange GruvboxBlue
