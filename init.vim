@@ -24,7 +24,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'tpope/vim-vinegar'
+Plug 'danilamihailov/beacon.nvim'    " cursor shenanigan
 
 "colors and appearance
 Plug 'rakr/vim-one'
@@ -53,8 +53,8 @@ syntax enable
 set background=dark
 let gruvbox_italic = 1
 let gruvbox_italicize_comments = 0
-let g:gruvbox_sign_column = 'bg1'
-let g:gruvbox_number_column = 'bg1'
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_number_column = 'bg0'
 colorscheme gruvbox
 
 
@@ -82,6 +82,14 @@ set updatetime=100           " for git gutter
 set timeoutlen=500 ttimeoutlen=0 " make esc faster(0 to 500 miliseconds
 set list lcs=space:·,tab:»\  " show whitespaces
 "set colorcolumn=80
+
+" cursorline config
+set cursorline
+" do not show background in current cursor line number
+hi CursorLineNr ctermbg=bg guibg=bg
+" fix cursorline highlight breaking on certain operators and symbols(like #)
+hi Operator ctermbg=NONE guibg=NONE
+hi Normal ctermbg=NONE guibg=NONE
 
 " Intelligent Searching
 set ignorecase
@@ -300,3 +308,10 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 EOF
+
+" netrw config
+let g:netrw_banner = 0
+let g:netrw_liststyle = 0
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 20
+nnoremap <leader>d :Vex<CR>  " browse the current vim directory

@@ -54,8 +54,8 @@ syntax enable
 set background=dark
 let gruvbox_italic = 1
 let gruvbox_italicize_comments = 0
-let g:gruvbox_sign_column = 'bg1'
-let g:gruvbox_number_column = 'bg1'
+let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_number_column = 'bg0'
 colorscheme gruvbox
 
 " For Json
@@ -89,6 +89,10 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+
+" cursorline config
+" do not show background in current cursor line number
+hi CursorLineNr ctermbg=bg guibg=bg
 
 set noruler
 set noshowmode               " don't show status in the command buffer
@@ -287,4 +291,4 @@ let g:netrw_liststyle = 0
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 20
-nnoremap <leader>d :Vex<CR>  " browser the current vim directory
+nnoremap <leader>d :Vex<CR>  " browse the current vim directory
