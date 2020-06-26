@@ -6,6 +6,8 @@ colors:
     background: '0x282828'
     # soft contrast: background = '0x32302f'
     foreground: '0xebdbb2'
+  cursor:
+    cursor: '0xfb4934'
 
   # Normal colors
   normal:
@@ -36,19 +38,19 @@ font:
   normal:
     family: xos4 Terminus
     # Style can be specified to pick a specific face.
-    style: Bold
+    style: Regular
 
   # The bold font face
   bold:
-    family: Fixedsys Excelsior
+    family: xos4 Terminus
     # Style can be specified to pick a specific face.
-    style: Regular
+    style: Bold
 
   # The italic font face
   italic:
-    family: OperatorMono Nerd Font
+    family: xos4 Terminus
     # Style can be specified to pick a specific face.
-    style: Extra Light Italic
+    style: Italic
 
 window:
     decorations: 'none'
