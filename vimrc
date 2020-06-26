@@ -66,7 +66,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 set nocp                     " make sure vim is not in compatible mode
 syntax on
 set number relativenumber    " show number
-set signcolumn=yes           " always show signcolumn
+"set signcolumn=yes           " always show signcolumn
 set smartindent
 set sw=4                     " no of spaces when shift indenting
 set ts=4                     " no of visual spaces per tab
