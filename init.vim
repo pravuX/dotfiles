@@ -84,6 +84,7 @@ set list lcs=space:·,tab:»\  " show whitespaces
 "set colorcolumn=80
 
 " cursorline config
+" note: cterm for not true colors, guibg for true colors
 set cursorline
 " do not show background in current cursor line number
 hi CursorLineNr ctermbg=bg guibg=bg
@@ -308,6 +309,7 @@ require'nvim-treesitter.configs'.setup {
     ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
 }
 EOF
+
 
 " netrw config
 let g:netrw_banner = 0
