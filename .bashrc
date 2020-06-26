@@ -13,13 +13,19 @@
 [[ $- != *i* ]] && return
 
 export HISTCONTROL=ignoreboth:erasedups
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 
 # Prompt
-# --------------------------------------------------------------------
-#┌[~]
-#└ॐ
-PS1='╒[\[\e[32m\]\W\[\e[m\]]\[\e[31m\]$(__git_ps1)\[\e[m\]\n╘ λ\[\e[35m\] ▶\[\e[m\] '
+# ----------------------------------------------------------------------------------
+# \[ and \] are used to mark start and end of a color sequence for a particular group
+# color -> \e[0;30-37m and no color -> \e[m || 0 -> 1 means bold
+noColor=$'\e[m'
+green=$'\e[0;32m'
+red=$'\e[1;31m'
+purple=$'\e[0;35m'
+gray=$'\e[0;37m'
+blue=$'\e[0;34m'
+PS1='$gray╒$noColor$green[$noColor$blue\[\W\]$noColor$green]$noColor$red$(__git_ps1 "[git::%s]")$noColor\n$gray╘$noColor λ$purple ❯$noColor '
 
 # git stuff
 if [ -f ~/.bash_git ]; then
