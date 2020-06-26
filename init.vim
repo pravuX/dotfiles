@@ -149,6 +149,11 @@ nnoremap c "_c
 nnoremap C "_C
 nnoremap cc "_cc
 
+" use ripgrep for :grep command
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --hidden
+endif
+
 
 " Plugins specific configurations
 
@@ -240,13 +245,31 @@ endfunction
 
 
 " fzf config
+" quick reference
+"ctrl-t: tab split
+"ctrl-s: split
+"ctrl-v: vsplit
+
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>F :Files ~/<CR>
 nnoremap <leader>b :Buffers<CR>
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 autocmd! FileType fzf set laststatus=0 noshowmode noruler norelativenumber signcolumn=no
   \| autocmd BufLeave <buffer> set laststatus=2
+
+" jump to existing window if possible
+let g:fzf_buffers_jump = 1
+
+" let the input go up and the search list go down
+let $FZF_DEFAULT_OPTS = '--reverse --no-info --cycle'
+let g:coc_fzf_opts = ['--reverse', '--no-info', '--cycle']
+
+" open FZF and choose floating window
+if has('nvim')
+    let g:fzf_layout = { 'window': { 'width': 0.5, 'height': 0.4, 'yoffset': 0 } }
+endif
+
+" empty value to disable preview window altogether
+let g:fzf_preview_window = ''
 
 
 " python-syntax config

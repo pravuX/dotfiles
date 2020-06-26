@@ -241,13 +241,25 @@ endfunction
 
 
 " fzf config
+" quick reference
+"ctrl-t: tab split
+"ctrl-s: split
+"ctrl-v: vsplit
+
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>F :Files ~/<CR>
 nnoremap <leader>b :Buffers<CR>
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2
+
+" jump to existing window if possible
+let g:fzf_buffers_jump = 1
+
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" empty value to disable preview window altogether
+let g:fzf_preview_window = ''
 
 
 " python-syntax config
