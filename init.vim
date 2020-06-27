@@ -101,6 +101,11 @@ set noruler
 set noshowmode              " don't show status in the command buffer
 set splitbelow splitright   " splits open at the bottom and right
 
+" Change cursor depending on the mode (FOR KDE KONSOLE)
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
