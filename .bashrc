@@ -39,7 +39,7 @@ export EDITOR=/usr/bin/nvim
 #blue=$'\e[34m'
 #noColor=$'\e[m'
 #λ
-PS1='┍╼[\[\e[0;34m\]\[\W\]\[\e[m\]]$(__git_ps1 "╼╾[\[\e[1;31m\]git::%s\[\e[m\]]")\n┕╼[\[\e[1;31m\]λ\[\e[m\]] \[\e[0;35m\]❱\[\e[m\] '
+PS1='┍╼[\[\e[0;34m\]\[\W\]\[\e[m\]]$(__git_ps1 "╼╾[\[\e[1;31m\]git::%s\[\e[m\]]")\n┕╼[\[\e[0;35m\]λ\[\e[m\]] \[\e[0;35m\]❱\[\e[m\] '
 
 # git stuff
 if [ -f ~/.bash_git ]; then
