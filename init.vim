@@ -19,11 +19,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'vimwiki/vimwiki'
 Plug 'airblade/vim-gitgutter'
-Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'nvim-treesitter/nvim-treesitter'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "colors and appearance
 Plug 'rakr/vim-one'
@@ -32,7 +30,9 @@ Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 
 Plug 'ap/vim-css-color'
+"Plug 'numirias/semshi'
 Plug 'vim-python/python-syntax'
+Plug 'jiangmiao/auto-pairs'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
@@ -186,24 +186,23 @@ let g:lightline.tab = {
     \ 'active': [ 'tabnum', 'filename' ],
     \ 'inactive': [ 'tabnum', 'filename' ] }
 
-" 'cocstatus' -> May come in handy
 let g:lightline.active = {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \              [ 'cocstatus', 'fileformat', 'fileencoding', 'filetype' ] ]
     \
     \}
 
 
-" may come in handy -> 'cocstatus': 'coc#status'
 let g:lightline.component_function = {
     \   'filename': 'LightlineFilename',
     \   'fileformat': 'LightlineFileFormat',
     \   'readonly': 'LightlineReadonly',
     \   'fileencoding': 'LightlineFileencoding',
     \   'gitbranch': 'gitbranch#name',
+    \   'cocstatus': 'coc#status'
     \}
 
 let g:lightline.tab_component_function = {
@@ -264,7 +263,7 @@ let g:fzf_buffers_jump = 1
 
 " let the input go up and the search list go down
 let $FZF_DEFAULT_OPTS = '--reverse --no-info --cycle'
-"let g:coc_fzf_opts = ['--reverse', '--no-info', '--cycle']
+let g:coc_fzf_opts = ['--reverse', '--no-info', '--cycle']
 
 " open FZF and choose floating window
 if has('nvim')
@@ -275,66 +274,37 @@ endif
 let g:fzf_preview_window = ''
 
 
-" python-syntax config
-let g:python_highlight_all = 1
-
-
-" neoterm config
-let g:neoterm_default_mod = 'belowright'
-
-
 " vimwiki
 let g:vimwiki_global_ext = 0
 
 
 " coc config
 " Use tab to navigate completion menu
-"inoremap <expr><TAB>
-      "\ pumvisible() ? "\<C-n>" :"\<TAB>"
-"inoremap <expr><S-TAB>
-      "\ pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><TAB>
+      \ pumvisible() ? "\<C-n>" :"\<TAB>"
+inoremap <expr><S-TAB>
+      \ pumvisible() ? "\<C-p>" : "\<C-h>"
 
-"" Use <c-space> to trigger completion.
-"inoremap <silent><expr> <c-space> coc#refresh()
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
 
-"" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-"" position. Coc only does snippet and additional edit on confirm.
-"" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-"if exists('*complete_info')
-  "inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"else
-  "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"endif
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
-"" GoTo code navigation.
-"nmap <leader>gd <Plug>(coc-definition)
-"nmap <leader>gy <Plug>(coc-type-definition)
-"nmap <leader>gi <Plug>(coc-implementation)
-"nmap <leader>gr <Plug>(coc-references)
+" GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
 
-"" Force lightline to update
-"autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-" treesitter config
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = false,                    -- false will disable the whole extension
-        disable = {},        -- list of language that will be disabled
-    },
-    incremental_selection = {
-        enable = false,
-        disable = {},
-        keymaps = {                       -- mappings for incremental selection (visual mappings)
-          init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
-          node_incremental = "grn",       -- increment to the upper named parent
-          scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
-          node_decremental = "grm",      -- decrement to the previous node
-        }
-    },
-    ensure_installed = 'all' -- one of 'all', 'language', or a list of languages
-}
-EOF
+" Force lightline to update
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 
 " netrw config
@@ -356,3 +326,7 @@ let g:gitgutter_sign_removed_first_line = '•'
 
 " made change hunk color blue
 hi! link GitGutterChange GruvboxBlue
+
+
+" python syntax
+let g:python_highlight_all = 1
