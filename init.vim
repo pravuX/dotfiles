@@ -23,7 +23,7 @@ Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "colors and appearance
 Plug 'rakr/vim-one'
@@ -186,22 +186,24 @@ let g:lightline.tab = {
     \ 'active': [ 'tabnum', 'filename' ],
     \ 'inactive': [ 'tabnum', 'filename' ] }
 
+" 'cocstatus' -> May come in handy
 let g:lightline.active = {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'gitbranch', 'readonly', 'filename', ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'cocstatus', 'fileformat', 'fileencoding', 'filetype' ] ]
+    \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \
     \}
 
+
+" may come in handy -> 'cocstatus': 'coc#status'
 let g:lightline.component_function = {
     \   'filename': 'LightlineFilename',
     \   'fileformat': 'LightlineFileFormat',
     \   'readonly': 'LightlineReadonly',
     \   'fileencoding': 'LightlineFileencoding',
     \   'gitbranch': 'gitbranch#name',
-    \   'cocstatus': 'coc#status'
     \}
 
 let g:lightline.tab_component_function = {
@@ -262,7 +264,7 @@ let g:fzf_buffers_jump = 1
 
 " let the input go up and the search list go down
 let $FZF_DEFAULT_OPTS = '--reverse --no-info --cycle'
-let g:coc_fzf_opts = ['--reverse', '--no-info', '--cycle']
+"let g:coc_fzf_opts = ['--reverse', '--no-info', '--cycle']
 
 " open FZF and choose floating window
 if has('nvim')
@@ -287,31 +289,31 @@ let g:vimwiki_global_ext = 0
 
 " coc config
 " Use tab to navigate completion menu
-inoremap <expr><TAB>
-      \ pumvisible() ? "\<C-n>" :"\<TAB>"
-inoremap <expr><S-TAB>
-      \ pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <expr><TAB>
+      "\ pumvisible() ? "\<C-n>" :"\<TAB>"
+"inoremap <expr><S-TAB>
+      "\ pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+"" Use <c-space> to trigger completion.
+"inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+"" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+"" position. Coc only does snippet and additional edit on confirm.
+"" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+"if exists('*complete_info')
+  "inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+"else
+  "inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"endif
 
-" GoTo code navigation.
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
+"" GoTo code navigation.
+"nmap <leader>gd <Plug>(coc-definition)
+"nmap <leader>gy <Plug>(coc-type-definition)
+"nmap <leader>gi <Plug>(coc-implementation)
+"nmap <leader>gr <Plug>(coc-references)
 
-" Force lightline to update
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+"" Force lightline to update
+"autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " treesitter config
 lua <<EOF

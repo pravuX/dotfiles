@@ -254,4 +254,4 @@ ex ()
   fi
 }
 
-ufetch
+ufetch | lolcat
