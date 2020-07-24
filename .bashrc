@@ -39,18 +39,18 @@ export EDITOR=/usr/bin/nvim
 #blue=$'\e[34m'
 #noColor=$'\e[m'
 #λ
-PS1='┍╼[\[\e[0;34m\]\[\W\]\[\e[m\]]$(__git_ps1 "╼╾[\[\e[1;31m\]git::%s\[\e[m\]]")\n┕╼[\[\e[0;35m\]λ\[\e[m\]] \[\e[0;35m\]❱\[\e[m\] '
+#PS1='┍╼[\[\e[0;34m\]\[\W\]\[\e[m\]]$(__git_ps1 "╼╾[\[\e[1;31m\]git::%s\[\e[m\]]")\n┕╼[\[\e[0;35m\]λ\[\e[m\]] \[\e[0;35m\]❱\[\e[m\] '
 
-# git stuff
-if [ -f ~/.bash_git ]; then
-  GIT_PS1_SHOWDIRTYSTATE=true
-  GIT_PS1_SHOWSTASHSTATE=true
-  GIT_PS1_SHOWUNTRACKEDFILES=true
-  GIT_PS1_SHOWUPSTREAM="auto"
-  GIT_PS1_HIDE_IF_PWD_IGNORED=true
-  GIT_PS1_SHOWCOLORHINTS=true
-  . ~/.bash_git
-fi
+## git stuff
+#if [ -f ~/.bash_git ]; then
+  #GIT_PS1_SHOWDIRTYSTATE=true
+  #GIT_PS1_SHOWSTASHSTATE=true
+  #GIT_PS1_SHOWUNTRACKEDFILES=true
+  #GIT_PS1_SHOWUPSTREAM="auto"
+  #GIT_PS1_HIDE_IF_PWD_IGNORED=true
+  #GIT_PS1_SHOWCOLORHINTS=true
+  #. ~/.bash_git
+#fi
 
 
 
@@ -255,3 +255,5 @@ ex ()
 }
 
 ufetch | lolcat
+
+eval "$(starship init bash)"
