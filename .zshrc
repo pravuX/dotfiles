@@ -12,26 +12,12 @@
 #|__/
 #
 # Personal Configurations of Prabesh Subedi
-# ~/.bashrc
+# ~/.zshrc
 #
 
 # aliases
 source ~/.bash_aliases
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+neofetch | lolcat
 
-export HISTCONTROL=ignoreboth:erasedups
-export EDITOR=/usr/bin/nvim
-
-if [ -d "$HOME/.bin" ] ;
-  then PATH="$HOME/.bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
-fi
-
-ufetch | lolcat
-
-eval "$(starship init bash)"
+eval "$(starship init zsh)"
