@@ -14,7 +14,7 @@
 
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
 Plug 'scrooloose/nerdcommenter'
 Plug 'vimwiki/vimwiki'
@@ -50,11 +50,11 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
-let gruvbox_italic = 1
-let gruvbox_italicize_comments = 0
-let g:gruvbox_sign_column = 'bg0'
-let g:gruvbox_number_column = 'bg0'
-colorscheme gruvbox
+"let gruvbox_italic = 1
+"let gruvbox_italicize_comments = 0
+"let g:gruvbox_sign_column = 'bg0'
+"let g:gruvbox_number_column = 'bg0'
+colorscheme nord
 
 
 " For Json
@@ -86,10 +86,11 @@ set list lcs=space:·,tab:»\  " show whitespaces
 " note: cterm for not true colors, guibg for true colors
 set cursorline
 " do not show background in current cursor line number
-hi CursorLineNr ctermbg=bg guibg=bg
+"hi CursorLineNr ctermbg=bg guibg=bg
 " fix cursorline highlight breaking on certain operators and symbols(like #)
 hi Operator ctermbg=NONE guibg=NONE
 hi Normal ctermbg=NONE guibg=NONE
+hi SignColumn cterm=NONE guibg=NONE
 
 " Intelligent Searching
 set ignorecase
@@ -160,7 +161,7 @@ endif
 
 "Lightline config
 let g:lightline = {
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme': 'nord',
     \ }
 
 let g:lightline.mode_map = {
