@@ -50,10 +50,16 @@ if (has("termguicolors"))
 endif
 syntax enable
 set background=dark
+
+" gruvbox settings
 "let gruvbox_italic = 1
 "let gruvbox_italicize_comments = 0
 "let g:gruvbox_sign_column = 'bg0'
 "let g:gruvbox_number_column = 'bg0'
+
+"nord settings
+let g:nord_italic = 1
+
 colorscheme nord
 
 
