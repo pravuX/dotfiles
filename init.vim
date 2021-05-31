@@ -49,7 +49,7 @@ if (has("termguicolors"))
  set termguicolors
 endif
 syntax enable
-set background=dark
+"set background=dark
 
 " gruvbox settings
 "let gruvbox_italic = 1
