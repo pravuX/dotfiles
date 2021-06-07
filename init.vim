@@ -91,7 +91,7 @@ set list lcs=space:·,tab:»\  " show whitespaces
 
 " cursorline config
 " note: cterm for not true colors, guibg for true colors
-set cursorline
+" set cursorline
 " do not show background in current cursor line number
 "hi CursorLineNr ctermbg=bg guibg=bg
 " fix cursorline highlight breaking on certain operators and symbols(like #)
