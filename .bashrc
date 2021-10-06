@@ -32,6 +32,4 @@ if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
 
-ufetch | lolcat
-
 eval "$(starship init bash)"
