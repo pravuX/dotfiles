@@ -16,6 +16,7 @@
 " Plugins
 call plug#begin('~/.config/nvim/plugged')
 " ESSENTIALISM -> Just gonna use the plugins I find essential
+Plug 'julialang/julia-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vimwiki/vimwiki'
 Plug 'airblade/vim-gitgutter'
