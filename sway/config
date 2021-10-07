@@ -200,9 +200,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #interactive screenshot by pressing printscreen
-bindsym Print exec ./scripts/grimshot.sh --notify active copy
+bindsym Print exec '~/dotfiles/sway/scripts/grimshot.sh --notify copy active'
 #crop-area screenshot by pressing Mod + printscreen
-bindsym $mod+Print exec ./scripts/grimshot.sh area copy
+bindsym $mod+Print exec ~/dotfiles/sway/scripts/grimshot.sh copy area
 
 gaps bottom 2
 gaps horizontal 2
