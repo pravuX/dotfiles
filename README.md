@@ -1,9 +1,9 @@
 # dotfiles
 **Personal configurations** of *Prabesh Subedi*
 
-- Font: Fira Code
-- Terminal: KDE Konsole(__good ligature support + some shenanigans__)
-### As I constantly forget how to create symlinks, here is an example:
+- Font: Input Mono
+- Terminal: foot
+### create symlinks
 `ln -s [path/to/source] [shortcut]`
 
 ### Super Caps
