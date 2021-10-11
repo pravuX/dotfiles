@@ -26,7 +26,7 @@ set $menu bemenu-run | xargs swaymsg exec
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/prabesh/Downloads/Nordic4.png fill
+output * bg /home/prabesh/Documents/tokyonight1.jpg fill
 #
 # Example configuration:
 #

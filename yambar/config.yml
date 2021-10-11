@@ -7,7 +7,7 @@
 # fonts we'll be re-using here and there
 awesome: &awesome NotoEmoji Nerd Font:style=solid:pixelsize=16
 
-std_underline: &std_underline {underline: { size: 2, color: ff0000ff}}
+std_underline: &std_underline {underline: { size: 2, color: f7768eff}}
 
 # This is THE bar configuration
 bar:
@@ -19,8 +19,8 @@ bar:
   # Default font
   font: Terminus:pixelsize=14
 
-  foreground: ffffffff
-  background: 111111cc
+  foreground: c0caf5ff
+  background: 414868cc
 
   border:
     width: 0
@@ -41,7 +41,7 @@ bar:
           - string: &i3_common {margin: 5, on-click: "swaymsg --quiet workspace {name}"}
           - string: &default {<<: *i3_common, text: "{name}", font: *awesome}
           - focused: &focused
-              deco: {stack: [background: {color: ffa0a04c}, <<: *std_underline]}
+              deco: {stack: [background: {color: 7aa2f74c}, <<: *std_underline]}
           - invisible: &invisible {foreground: ffffff55}
           - urgent: &urgent
               foreground: 000000ff
