@@ -23,6 +23,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 "colors and appearance
 Plug 'rakr/vim-one'
@@ -32,7 +34,7 @@ Plug 'arcticicestudio/nord-vim'
 
 Plug 'ap/vim-css-color'
 "Plug 'numirias/semshi'
-Plug 'vim-python/python-syntax'
+"Plug 'vim-python/python-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'itchyny/lightline.vim'
@@ -339,4 +341,23 @@ hi! link GitGutterChange GruvboxBlue
 
 
 " python syntax
-let g:python_highlight_all = 1
+"let g:python_highlight_all = 1
+
+" tree sitter config
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<CR>",
+      scope_incremental = "<CR>",
+      node_incremental = "<TAB>",
+      node_decremental = "<S-TAB>",
+    },
+  },
+}
+EOF
