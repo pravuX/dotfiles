@@ -132,7 +132,7 @@ input type:touchpad {
     # Note: workspaces can have any name you want, not just numbers.
 
     #Assign workspaces
-    assign [app_id="zoom"] $ws3
+    #assign [app_id="zoom"] $ws3
     assign [app_id="firefox"] $ws2
 
 #
@@ -143,6 +143,11 @@ input type:touchpad {
     # respectively.
     bindsym $mod+b splith
     bindsym $mod+v splitv
+    # Autotiling stuff
+    exec --no-startup-id swaymgr -s 'set spiral'
+    bindsym --to-code $mod+Alt+s exec swaymgr -s 'set spiral'
+    bindsym --to-code $mod+Alt+l exec swaymgr -s 'set left'
+    bindsym --to-code $mod+Alt+m exec swaymgr -s 'set manual'
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -227,11 +232,11 @@ exec yambar
     #swaybar_command yambar
 #}
 
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Use amixer to adjust volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Floating rules for windows
 for_window [window_type="menu"]            floating enable
@@ -253,7 +258,6 @@ include /etc/sway/config.d/*
 # Autostart
 exec /home/prabesh/.config/sway/scripts/import-settings.sh
 exec python $HOME/.config/sway/scripts/inactive-windows-transparency.py
-exec python $HOME/.config/sway/scripts/autotiling.py
 exec pipewire
 exec pipewire-media-session
 exec pipewire-pulse
