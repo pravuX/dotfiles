@@ -1,4 +1,5 @@
 local map = require('utils').map
+local remap = require('utils').remap
 -- keybindings/mappings
 -- change size of split panes
 map('n', '<M-h>', '<C-w><')
@@ -16,10 +17,6 @@ map('n', '<leader>cd', ':lcd %:p:h<CR>:pwd<CR>')
 map('n', 'c', [["_c]])
 map('n', 'C', [["_C]])
 map('n', 'cc', [["_cc]])
--- fzf configs
-map('n', '<leader>f', ':Files<CR>')
-map('n', '<leader>F', ':Files ~/<CR>')
-map('n', '<leader>b', ':Buffers<CR>')
 -- netrw config
 map('n', '<leader>d', ':Vex<CR>')
 -- move between buffers
@@ -30,3 +27,8 @@ map('', '<C-h>', '<C-W>h')
 map('', '<C-l>', '<C-W>l')
 map('', '<C-j>', '<C-W>j')
 map('', '<C-k>', '<C-W>k')
+-- telescope
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fg', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fb', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')

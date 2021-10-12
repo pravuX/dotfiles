@@ -8,9 +8,6 @@ require 'paq' {
     'julialang/julia-vim';
     'nvim-treesitter/nvim-treesitter';
     'neovim/nvim-lspconfig';
-    {'junegunn/fzf', run = u.fn['fzf#install']};
-    'junegunn/fzf.vim';
-    'ojroques/nvim-lspfuzzy';
     {'folke/tokyonight.nvim', branch = 'main'};
     'lukas-reineke/indent-blankline.nvim';
     {
@@ -18,4 +15,10 @@ require 'paq' {
         branch = 'main',
     };
     {'kyazdani42/nvim-web-devicons'};
+    'nvim-telescope/telescope.nvim';
+     'hrsh7th/cmp-nvim-lsp';
+     'hrsh7th/cmp-buffer';
+     'hrsh7th/nvim-cmp';
+     'hrsh7th/cmp-vsnip';
+     'hrsh7th/vim-vsnip';
 }

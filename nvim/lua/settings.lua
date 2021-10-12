@@ -34,6 +34,8 @@ u.opt.smartcase = true
 u.opt.ignorecase = true
 u.opt.hlsearch = true
 u.opt.incsearch = true
+-- completion
+u.opt.completeopt = 'menu,menuone,noselect'
 -- miscellaneous
 u.opt.wrap = true
 u.opt.linebreak = true

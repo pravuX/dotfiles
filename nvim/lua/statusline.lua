@@ -142,6 +142,7 @@ gls.right[9] = {
     provider = 'GitBranch',
     condition = condition.check_git_workspace,
     highlight = {colors.orange,colors.bg,'bold'},
+    separator = ' '
   }
 }
 

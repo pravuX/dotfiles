@@ -9,16 +9,16 @@ require('nvim-treesitter.configs').setup {
         enable = true,
         additional_vim_regex_highlighting = true
     },
-    -- enable multiline selection
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "<CR>",
-            scope_incremental = "<CR>",
-            node_incremental = "<TAB>",
-            node_decremental = "<S-TAB>",
-        },
-    },
+    -- enable extended selection
+  incremental_selection = {
+      enable = true,
+      keymaps = {
+          init_selection = "<CR>",
+          scope_incremental = "<CR>",
+          node_incremental = "<TAB>",
+          node_decremental = "<S-TAB>",
+      },
+  },
     -- enable indentation
     -- indent = { enable = true },
 }
@@ -55,13 +55,44 @@ u.g.netrw_liststyle = 0
 u.g.netrw_browse_split = 4
 u.g.netrw_winsize = 20
 
+-- completion
+local cmp = require('cmp')
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            u.fn['vsnip#anonymous'](args.body)
+        end,
+    },
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'vsnip' }
+    },
+    mapping = {
+        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.close(),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        })
+    },
+})
+
 -- LSP Configuration
 local lspconfig = require'lspconfig'
 -- c/c++ language server
 lspconfig.ccls.setup{}
 
 -- python language server
-lspconfig.pyright.setup{}
+lspconfig.pyright.setup{
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
 
 -- julia language server
 lspconfig.julials.setup{}
@@ -75,7 +106,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 lspconfig.sumneko_lua.setup{
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     settings = {
         Lua = {
             diagnostics = {
@@ -94,7 +125,6 @@ lspconfig.sumneko_lua.setup{
                 enable = false,
             }
         }
-    }
+    },
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
-
--- galaxyline configuration
