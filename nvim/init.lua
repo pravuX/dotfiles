@@ -1,4 +1,3 @@
-
 --- package management
 require('plugins')
 -- appearance
@@ -11,3 +10,5 @@ require('autocommands')
 require('maps')
 -- plugin configurations
 require('plugin-configs')
+-- statusline
+require('statusline')
