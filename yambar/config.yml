@@ -219,10 +219,15 @@ bar:
           - ramp:
               tag: percent
               items:
-                - string: {text: , font: *awesome}
-                - string: {text: , font: *awesome}
-                - string: {text: , font: *awesome}
-                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome} # half
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
+                - string: {text: , font: *awesome}
     #- script:
         #path: /home/prabesh/.config/yambar/brightness.sh
         #args: []
