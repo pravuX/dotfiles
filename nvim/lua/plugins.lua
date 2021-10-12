@@ -3,7 +3,7 @@ local u = require('utils')
 require 'paq' {
     {'savq/paq-nvim'};                  -- Let Paq manage itself
     'shaunsingh/nord.nvim';
-    {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'}};
+    'lewis6991/gitsigns.nvim';
     'nvim-lua/plenary.nvim';
     'julialang/julia-vim';
     'nvim-treesitter/nvim-treesitter';
@@ -13,4 +13,9 @@ require 'paq' {
     'ojroques/nvim-lspfuzzy';
     {'folke/tokyonight.nvim', branch = 'main'};
     'lukas-reineke/indent-blankline.nvim';
+    {
+        'glepnir/galaxyline.nvim',
+        branch = 'main',
+    };
+    {'kyazdani42/nvim-web-devicons'};
 }

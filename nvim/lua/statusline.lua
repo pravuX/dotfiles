@@ -4,41 +4,22 @@ local gls = gl.section
 gl.short_line_list = {'NvimTree','vista','dbui','packer'}
 
 local colors = {
-    none = "NONE",
-    bg_dark = "#1f2335",
-    bg = "#24283b",
-    bg_highlight = "#292e42",
-    terminal_black = "#414868",
-    fg = "#c0caf5",
-    fg_dark = "#a9b1d6",
-    fg_gutter = "#3b4261",
-    dark3 = "#545c7e",
-    comment = "#565f89",
-    dark5 = "#737aa2",
-    blue0 = "#3d59a1",
-    blue = "#7aa2f7",
-    cyan = "#7dcfff",
-    blue1 = "#2ac3de",
-    blue2 = "#0db9d7",
-    blue5 = "#89ddff",
-    blue6 = "#B4F9F8",
-    blue7 = "#394b70",
-    magenta = "#bb9af7",
-    magenta2 = "#ff007c",
-    purple = "#9d7cd8",
-    orange = "#ff9e64",
-    yellow = "#e0af68",
-    green = "#9ece6a",
-    green1 = "#73daca",
-    green2 = "#41a6b5",
-    teal = "#1abc9c",
-    red = "#f7768e",
-    red1 = "#db4b4b",
+    bg = 'NONE',
+    fg = '#c0caf5',
+    yellow = '#e0af68',
+    cyan = '#7dcfff',
+    darkblue = '#3d59a1',
+    green = '#9ece6a',
+    orange = '#ff9e64',
+    violet = '#9d7cd8',
+    magenta = '#bb9af7',
+    blue = '#7aa2f7';
+    red = '#f7768e';
 }
 
 gls.left[1] = {
   RainbowRed = {
-    provider = function() return '' end,
+    provider = function() return ' ' end,
     highlight = {colors.blue,colors.bg}
   },
 }
@@ -50,7 +31,7 @@ gls.left[2] = {
                           [''] = colors.blue,V=colors.blue,
                           c = colors.magenta,no = colors.red,s = colors.orange,
                           S=colors.orange,[''] = colors.orange,
-                          ic = colors.yellow,R = colors.magenta2,Rv = colors.magenta2,
+                          ic = colors.yellow,R = colors.violet,Rv = colors.violet,
                           cv = colors.red,ce=colors.red, r = colors.cyan,
                           rm = colors.cyan, ['r?'] = colors.cyan,
                           ['!']  = colors.red,t = colors.red}
@@ -60,13 +41,6 @@ gls.left[2] = {
     highlight = {colors.red,colors.bg,'bold'},
   },
 }
---gls.left[3] = {
---  FileSize = {
---    provider = 'FileSize',
---    condition = condition.buffer_not_empty,
---    highlight = {colors.fg,colors.bg}
---  }
---}
 gls.left[3] ={
   FileIcon = {
     provider = 'FileIcon',
@@ -75,7 +49,7 @@ gls.left[3] ={
   },
 }
 
-gls.left[5] = {
+gls.left[4] = {
   FileName = {
     provider = 'FileName',
     condition = condition.buffer_not_empty,
@@ -84,14 +58,16 @@ gls.left[5] = {
 }
 
 
-gls.left[8] = {
+
+gls.right[1] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
     highlight = {colors.red,colors.bg}
   }
 }
-gls.left[9] = {
+
+gls.right[2] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -99,7 +75,7 @@ gls.left[9] = {
   }
 }
 
-gls.left[10] = {
+gls.right[3] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -107,7 +83,7 @@ gls.left[10] = {
   }
 }
 
-gls.left[11] = {
+gls.right[4] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -115,31 +91,61 @@ gls.left[11] = {
   }
 }
 
-gls.mid[1] = {
-  ShowLspClient = {
-    provider = 'GetLspClient',
-    condition = function ()
-      local tbl = {['dashboard'] = true,['']=true}
-      if tbl[vim.bo.filetype] then
-        return false
-      end
-      return true
-    end,
-    icon = ' LSP:',
-    highlight = {colors.cyan,colors.bg,'bold'}
+--gls.right[5] = {
+--  FileFormat = {
+--    provider = function() return vim.bo.fileformat end,
+--    condition = condition.buffer_not_empty,
+--    separator = ' ',
+--    separator_highlight = {'NONE',colors.bg},
+--    highlight = {colors.green,colors.bg,'bold'}
+--  }
+--}
+
+
+gls.right[5] = {
+  DiffAdd = {
+    provider = 'DiffAdd',
+    condition = condition.buffer_not_empty,
+    icon = '  ',
+    highlight = {colors.green,colors.bg},
+    separator = ' '
+  }
+}
+gls.right[6] = {
+  DiffModified = {
+    provider = 'DiffModified',
+    condition = condition.buffer_not_empty,
+    icon = ' 柳',
+    highlight = {colors.violet,colors.bg},
+  }
+}
+gls.right[7] = {
+  DiffRemove = {
+    provider = 'DiffRemove',
+    condition = condition.buffer_not_empty,
+    icon = '  ',
+    highlight = {colors.red,colors.bg},
+  }
+}
+gls.right[8] = {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = condition.check_git_workspace,
+    separator = '',
+    separator_highlight = {'NONE',colors.bg},
+    highlight = {colors.orange,colors.bg,'bold'},
   }
 }
 
-gls.right[1] = {
-  FileEncode = {
-    provider = 'FileEncode',
-    condition = condition.hide_in_width,
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.green,colors.bg,'bold'}
+gls.right[9] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = condition.check_git_workspace,
+    highlight = {colors.orange,colors.bg,'bold'},
   }
 }
-gls.right[2] = {
+
+gls.right[10] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' ',
@@ -148,71 +154,9 @@ gls.right[2] = {
   },
 }
 
-gls.right[3] = {
-  PerCent = {
-    provider = 'LinePercent',
-    separator = '',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.fg,colors.bg,'bold'},
-  }
-}
-
-gls.right[4] = {
-  FileFormat = {
-    provider = 'FileFormat',
-    condition = condition.hide_in_width,
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.green,colors.bg,'bold'}
-  }
-}
-
-gls.right[5] = {
-  GitIcon = {
-    provider = function() return '  ' end,
-    condition = condition.check_git_workspace,
-    separator = ' ',
-    separator_highlight = {'NONE',colors.bg},
-    highlight = {colors.violet,colors.bg,'bold'},
-  }
-}
-
-gls.right[6] = {
-  GitBranch = {
-    provider = 'GitBranch',
-    condition = condition.check_git_workspace,
-    highlight = {colors.violet,colors.bg,'bold'},
-  }
-}
-
-gls.right[7] = {
-  DiffAdd = {
-    provider = 'DiffAdd',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = {colors.green,colors.bg},
-  }
-}
-gls.right[8] = {
-  DiffModified = {
-    provider = 'DiffModified',
-    condition = condition.hide_in_width,
-    icon = ' 柳',
-    highlight = {colors.orange,colors.bg},
-  }
-}
-gls.right[9] = {
-  DiffRemove = {
-    provider = 'DiffRemove',
-    condition = condition.hide_in_width,
-    icon = '  ',
-    highlight = {colors.red,colors.bg},
-  }
-}
-
-gls.right[10] = {
+gls.right[11] = {
   RainbowBlue = {
-    provider = function() return ' ' end,
+    provider = function() return ' ' end,
     highlight = {colors.blue,colors.bg}
   },
 }
