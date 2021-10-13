@@ -9,12 +9,12 @@ require 'paq' {
     'nvim-treesitter/nvim-treesitter';
     'neovim/nvim-lspconfig';
     {'folke/tokyonight.nvim', branch = 'main'};
-    'lukas-reineke/indent-blankline.nvim';
     {
         'glepnir/galaxyline.nvim',
         branch = 'main',
     };
     {'kyazdani42/nvim-web-devicons'};
     'nvim-telescope/telescope.nvim';
-    'norcalli/nvim-colorizer.lua'
+    'norcalli/nvim-colorizer.lua';
+    'ms-jpq/coq_nvim';
 }
