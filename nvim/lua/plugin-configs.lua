@@ -1,6 +1,9 @@
 local u = require('utils')
 -- plugin configurations
 
+-- colorizer
+require('colorizer').setup()
+
 -- treesitter configurations
 require('nvim-treesitter.configs').setup {
     ensure_installed = 'maintained',
@@ -50,33 +53,6 @@ require("indent_blankline").setup {
 }
 
 -- completion
-local cmp = require('cmp')
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            u.fn['vsnip#anonymous'](args.body)
-        end,
-    },
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'buffer' },
-        { name = 'vsnip' }
-    },
-    mapping = {
-        ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        })
-    },
-})
 
 -- LSP Configuration
 local lspconfig = require'lspconfig'
@@ -85,7 +61,7 @@ lspconfig.ccls.setup{}
 
 -- python language server
 lspconfig.pyright.setup{
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    --
 }
 
 -- julia language server
@@ -120,5 +96,4 @@ lspconfig.sumneko_lua.setup{
             }
         }
     },
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 }

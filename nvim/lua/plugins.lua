@@ -16,9 +16,5 @@ require 'paq' {
     };
     {'kyazdani42/nvim-web-devicons'};
     'nvim-telescope/telescope.nvim';
-     'hrsh7th/cmp-nvim-lsp';
-     'hrsh7th/cmp-buffer';
-     'hrsh7th/nvim-cmp';
-     'hrsh7th/cmp-vsnip';
-     'hrsh7th/vim-vsnip';
+    'norcalli/nvim-colorizer.lua'
 }
