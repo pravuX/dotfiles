@@ -49,12 +49,6 @@ require("indent_blankline").setup {
     show_trailing_blankline_indent = false,
 }
 
--- netrw config
-u.g.netrw_banner = 0
-u.g.netrw_liststyle = 0
-u.g.netrw_browse_split = 4
-u.g.netrw_winsize = 20
-
 -- completion
 local cmp = require('cmp')
 cmp.setup({
