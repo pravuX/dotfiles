@@ -44,13 +44,13 @@ require('gitsigns').setup {
 }
 
 -- indentline configs
-require("indent_blankline").setup {
-    char = "│",
-    space_char_blankline=' ',
-    buftype_exclude = {"terminal"},
-    show_end_of_line = true,
-    show_trailing_blankline_indent = false,
-}
+--require("indent_blankline").setup {
+--    char = "│",
+--    space_char_blankline=' ',
+--    buftype_exclude = {"terminal"},
+--    show_end_of_line = true,
+--    show_trailing_blankline_indent = false,
+--}
 
 -- completion
 

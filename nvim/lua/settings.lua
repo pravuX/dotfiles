@@ -26,7 +26,7 @@ u.opt.timeoutlen = 500
 -- display whitespace
 u.opt.showbreak = '¬'
 u.opt.list = true
-u.opt.lcs = [[space:·,eol:↴]]
+u.opt.lcs = [[tab: ,space:·,eol:↴]]
 -- use os clipboard
 u.opt.clipboard = 'unnamedplus'
 -- intelligent searching
