@@ -16,5 +16,6 @@ require 'paq' {
     {'kyazdani42/nvim-web-devicons'};
     'nvim-telescope/telescope.nvim';
     'norcalli/nvim-colorizer.lua';
-    'ms-jpq/coq_nvim';
+    {'ms-jpq/coq_nvim', branch = 'coq'};
+    {'ms-jpq/coq.artifacts', branch = 'artifacts'};
 }
