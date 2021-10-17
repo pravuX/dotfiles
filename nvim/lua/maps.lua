@@ -2,10 +2,10 @@ local map = require('utils').map
 local remap = require('utils').remap
 -- keybindings/mappings
 -- change size of split panes
-map('n', '<M-h>', '<C-w><')
-map('n', '<M-l>', '<C-w>>')
-map('n', '<M-j>', '<C-w>-')
-map('n', '<M-k>', '<C-w>+')
+map('n', '<M-H>', '<C-w><')
+map('n', '<M-L>', '<C-w>>')
+map('n', '<M-J>', '<C-w>-')
+map('n', '<M-K>', '<C-w>+')
 
 -- yank to the end of the line (consistent with D, C)
 map('n', 'Y', 'y$')
@@ -23,10 +23,10 @@ map('n', '<leader>d', ':Vex<CR>')
 map('', '<C-left>', '<Esc>:bp<CR>')
 map('', '<C-right>', '<Esc>:bn<CR>')
 -- switch between split screens
-map('', '<C-h>', '<C-W>h')
-map('', '<C-l>', '<C-W>l')
-map('', '<C-j>', '<C-W>j')
-map('', '<C-k>', '<C-W>k')
+map('', '<M-h>', '<C-w><C-h>')
+map('', '<M-l>', '<C-w><C-l>')
+map('', '<M-j>', '<C-w><C-j>')
+map('', '<M-k>', '<C-w><C-k>')
 -- telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope file_browser<cr>')
