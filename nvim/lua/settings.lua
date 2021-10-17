@@ -1,6 +1,7 @@
 local u = require('utils')
 -- settings and options
 u.g.mapleader = ','
+u.g.maplocalleader = ','
 -- get a nice numberline
 u.opt.number = true
 u.opt.relativenumber = true
