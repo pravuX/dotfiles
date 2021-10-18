@@ -43,3 +43,4 @@ u.opt.linebreak = true
 u.opt.encoding = 'utf-8'
 u.opt.ruler = false
 u.opt.showmode = false
+u.opt.hidden = true
