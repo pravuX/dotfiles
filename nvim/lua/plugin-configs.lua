@@ -66,6 +66,9 @@ lspconfig.pyright.setup{
 -- julia language server
 lspconfig.julials.setup{}
 
+-- racket language server
+lspconfig.racket_langserver.setup{}
+
 -- lua language server
 local system_name = 'Linux'
 local sumneko_root_path = '/home/prabesh/lua-language-server'
@@ -115,4 +118,8 @@ require("toggleterm").setup{
   insert_mappings = true, -- whether or not the open mapping applies in insert mode
   persist_size = true,
   direction = 'vertical',
+}
+-- trouble
+require("trouble").setup {
+    --
 }

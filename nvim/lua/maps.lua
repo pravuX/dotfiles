@@ -1,11 +1,12 @@
 local map = require('utils').map
 local remap = require('utils').remap
+local opts = { silent = true }
 -- keybindings/mappings
 -- change size of split panes
-map('n', '<M-H>', '<C-w><' ,{ silent = true })
-map('n', '<M-L>', '<C-w>>' ,{ silent = true })
-map('n', '<M-J>', '<C-w>-' ,{ silent = true })
-map('n', '<M-K>', '<C-w>+' ,{ silent = true })
+map('n', '<M-H>', '<C-w><' ,opts)
+map('n', '<M-L>', '<C-w>>' ,opts)
+map('n', '<M-J>', '<C-w>-' ,opts)
+map('n', '<M-K>', '<C-w>+' ,opts)
 
 -- yank to the end of the line (consistent with D, C)
 map('n', 'Y', 'y$')
@@ -18,25 +19,28 @@ map('n', 'c', [["_c]])
 map('n', 'C', [["_C]])
 map('n', 'cc', [["_cc]])
 -- move between buffers
-map('', '<C-left>', '<Esc>:bp<CR>' ,{ silent = true })
-map('', '<C-right>', '<Esc>:bn<CR>' ,{ silent = true })
+map('', '<C-left>', '<Esc>:bp<CR>' ,opts)
+map('', '<C-right>', '<Esc>:bn<CR>' ,opts)
 -- switch between split screens
-map('', '<M-h>', '<C-w><C-h>' ,{ silent = true })
-map('', '<M-l>', '<C-w><C-l>' ,{ silent = true })
-map('', '<M-j>', '<C-w><C-j>' ,{ silent = true })
-map('', '<M-k>', '<C-w><C-k>' ,{ silent = true })
-map('t', '<Esc>', [[<C-\><C-n>]] ,{ silent = true })
-map('t', '<M-h>', [[<C-\><C-N><C-w>h]] ,{ silent = true })
-map('t', '<M-l>', [[<C-\><C-N><C-w>l]] ,{ silent = true })
-map('t', '<M-j>', [[<C-\><C-N><C-w>j]] ,{ silent = true })
-map('t', '<M-k>', [[<C-\><C-N><C-w>k]] ,{ silent = true })
+map('', '<M-h>', '<C-w><C-h>' ,opts)
+map('', '<M-l>', '<C-w><C-l>' ,opts)
+map('', '<M-j>', '<C-w><C-j>' ,opts)
+map('', '<M-k>', '<C-w><C-k>' ,opts)
+map('t', '<Esc>', [[<C-\><C-n>]] ,opts)
+map('t', '<M-h>', [[<C-\><C-N><C-w>h]] ,opts)
+map('t', '<M-l>', [[<C-\><C-N><C-w>l]] ,opts)
+map('t', '<M-j>', [[<C-\><C-N><C-w>j]] ,opts)
+map('t', '<M-k>', [[<C-\><C-N><C-w>k]] ,opts)
 -- telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope file_browser<cr>')
 map('n', '<leader>fb', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
--- FTerm
-local opts = { noremap = true, silent = true }
+-- trouble
 
-map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
-map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+map('n', '<leader>xx', '<cmd>TroubleToggle<cr>', opts)
+map('n', '<leader>xw', '<cmd>TroubleToggle lsp_workspace_diagnostics<cr>', opts)
+map('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<cr>', opts)
+map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', opts)
+map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', opts)
+map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>', opts)

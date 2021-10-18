@@ -21,5 +21,6 @@ require 'paq' {
     'b3nj5m1n/kommentary';
     {'Olical/conjure', pin = true, branch = 'develop'};
     'wlangstroth/vim-racket',
-    'akinsho/toggleterm.nvim'
+    'akinsho/toggleterm.nvim',
+    'folke/trouble.nvim'
 }
