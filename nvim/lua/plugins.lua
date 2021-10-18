@@ -19,5 +19,6 @@ require 'paq' {
     {'ms-jpq/coq_nvim', branch = 'coq'};
     {'ms-jpq/coq.artifacts', branch = 'artifacts'};
     'b3nj5m1n/kommentary';
-    {'Olical/conjure', pin = true};
+    {'Olical/conjure', pin = true, branch = 'develop'};
+    'wlangstroth/vim-racket'
 }
