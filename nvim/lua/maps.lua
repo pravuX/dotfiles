@@ -37,10 +37,11 @@ map('n', '<leader>fg', '<cmd>Telescope file_browser<cr>')
 map('n', '<leader>fb', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>')
 -- trouble
-
 map('n', '<leader>xx', '<cmd>TroubleToggle<cr>', opts)
 map('n', '<leader>xw', '<cmd>TroubleToggle lsp_workspace_diagnostics<cr>', opts)
 map('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<cr>', opts)
 map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', opts)
 map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', opts)
 map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>', opts)
+-- insert chars
+map('i', [[<M-\>]], 'λ')
