@@ -26,7 +26,7 @@ set $menu bemenu-run | xargs swaymsg exec
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/prabesh/Documents/tokyonight1.jpg fill
+output * bg /home/prabesh/Downloads/Wallpapers/tokyonight1.jpg fill
 #
 # Example configuration:
 #
@@ -254,6 +254,7 @@ for_window [app_id="zoom"]                 floating enable
 for_window [app_id="drracket"]                 floating enable
 for_window [class="Gnuplot-wx"]            floating enable
 for_window [app_id="mpv"]                   floating enable
+for_window [app_id="anki"]                   floating enable
 
 # set cursor
 seat seat0 xcursor_theme capitaine-cursors 24
