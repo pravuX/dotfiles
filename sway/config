@@ -146,11 +146,6 @@ input type:keyboard {
     # respectively.
     bindsym $mod+b splith
     bindsym $mod+v splitv
-    # Autotiling stuff
-    exec --no-startup-id swaymgr -s 'set spiral'
-    bindsym --to-code $mod+Alt+s exec swaymgr -s 'set spiral'
-    bindsym --to-code $mod+Alt+l exec swaymgr -s 'set left'
-    bindsym --to-code $mod+Alt+m exec swaymgr -s 'set manual'
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -262,7 +257,6 @@ seat seat0 xcursor_theme capitaine-cursors 24
 include /etc/sway/config.d/*
 # Autostart
 exec /home/prabesh/.config/sway/scripts/import-settings.sh
-exec python $HOME/.config/sway/scripts/inactive-windows-transparency.py
 exec pipewire
 exec pipewire-media-session
 exec pipewire-pulse
