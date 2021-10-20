@@ -45,7 +45,7 @@ u.opt.ruler = false
 u.opt.showmode = false
 u.opt.hidden = true
 -- change diagnostic icons
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
