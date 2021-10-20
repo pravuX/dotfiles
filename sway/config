@@ -163,6 +163,9 @@ input type:keyboard {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # useful for swalling windows
+    bindsym $mod+n split horizontal; layout tabbed
 #
 # Scratchpad:
 #
