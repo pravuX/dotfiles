@@ -23,5 +23,6 @@ require 'paq' {
     'wlangstroth/vim-racket',
     'akinsho/toggleterm.nvim',
     'folke/trouble.nvim',
-    {'mlochbaum/BQN'}
+    {'mlochbaum/BQN'},
+    'akinsho/bufferline.nvim',
 }

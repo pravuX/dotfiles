@@ -4,6 +4,9 @@ local u = require('utils')
 -- colorizer
 require('colorizer').setup()
 
+-- bufferline
+require("bufferline").setup{}
+
 -- treesitter configurations
 require('nvim-treesitter.configs').setup {
     ensure_installed = 'maintained',
