@@ -69,6 +69,9 @@ lspconfig.julials.setup{}
 -- racket language server
 lspconfig.racket_langserver.setup{}
 
+-- haskell language server
+lspconfig.hls.setup{}
+
 -- lua language server
 local system_name = 'Linux'
 local sumneko_root_path = '/home/prabesh/lua-language-server'
