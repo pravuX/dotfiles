@@ -249,6 +249,7 @@ for_window [title="Preferences$"]          floating enable
 for_window [class="Gui.py"]                floating enable
 for_window [class="feh"]                   floating enable
 for_window [app_id="zoom"]                 floating enable
+for_window [class="zoom"]                 floating enable
 for_window [app_id="drracket"]                 floating enable
 for_window [class="Gnuplot-wx"]            floating enable
 for_window [app_id="mpv"]                   floating enable
