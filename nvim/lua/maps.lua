@@ -47,5 +47,7 @@ map('n', '<leader>xd', '<cmd>TroubleToggle lsp_document_diagnostics<cr>', opts)
 map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', opts)
 map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>', opts)
 map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>', opts)
+-- nvim tree
+map('n', '<leader>d', '<cmd>NvimTreeToggle<cr>')
 -- insert chars
 map('i', [[<M-\>]], 'λ')

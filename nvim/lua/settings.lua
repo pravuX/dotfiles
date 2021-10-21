@@ -44,7 +44,8 @@ u.opt.encoding = 'utf-8'
 u.opt.ruler = false
 u.opt.showmode = false
 u.opt.hidden = true
--- change diagnostic icons
+u.opt.mouse = 'a'
+-- set diagnostic icons
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 for type, icon in pairs(signs) do

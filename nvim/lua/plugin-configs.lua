@@ -7,6 +7,9 @@ require('colorizer').setup()
 -- bufferline
 require("bufferline").setup{}
 
+-- nvim tree
+require("nvim-tree").setup()
+
 -- treesitter configurations
 require('nvim-treesitter.configs').setup {
     ensure_installed = 'maintained',
