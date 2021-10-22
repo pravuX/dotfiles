@@ -1,3 +1,4 @@
+migrated to [codeberg](https://codeberg.org/pravuX/dotfiles)
 # dotfiles
 **Personal configurations** of *Prabesh Subedi*
 
