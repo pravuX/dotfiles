@@ -5,7 +5,7 @@
 # the sway-xkb module with the xkb module.
 
 # fonts we'll be re-using here and there
-awesome: &awesome NotoEmoji Nerd Font:style=solid:pixelsize=16
+awesome: &awesome Symbols Nerd Font:style=solid:pixelsize=16
 
 std_underline: &std_underline {underline: { size: 2, color: f7768eff}}
 
@@ -169,7 +169,7 @@ bar:
                         values:
                           "": {string: {text: , font: *awesome, foreground: ffffff66}}
     - network:
-        name: wlp1s0
+        name: wlan0
         content:
           map:
             tag: state

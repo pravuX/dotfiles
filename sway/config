@@ -58,7 +58,10 @@ input type:touchpad {
 input type:keyboard {
     xkb_options caps:escape
 }
+mouse_warping none
+focus_follows_mouse yes
 #
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -135,8 +138,9 @@ input type:keyboard {
     # Note: workspaces can have any name you want, not just numbers.
 
     #Assign workspaces
-    #assign [app_id="zoom"] $ws3
-    assign [app_id="firefox"] $ws2
+    assign [class="discord"] $ws4
+    assign [app_id="drracket"] $ws1
+    assign [class="firefoxdeveloperedition"] $ws2
 
 #
 # Layout stuff:
@@ -248,9 +252,7 @@ for_window [window_type="dialog"]          floating enable
 for_window [title="Preferences$"]          floating enable
 for_window [class="Gui.py"]                floating enable
 for_window [class="feh"]                   floating enable
-for_window [app_id="zoom"]                 floating enable
-for_window [class="zoom"]                 floating enable
-for_window [app_id="drracket"]                 floating enable
+# for_window [app_id="drracket"]                 floating enable
 for_window [class="Gnuplot-wx"]            floating enable
 for_window [app_id="mpv"]                   floating enable
 for_window [app_id="anki"]                   floating enable
